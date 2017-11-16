@@ -1,3 +1,5 @@
+package Model;
+
 import Model.Album;
 import Model.DatabaseConnection;
 import java.util.ArrayList;
