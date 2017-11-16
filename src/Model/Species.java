@@ -1,12 +1,9 @@
-
-
-
 package Model;
-
 public class Species{
 
-    private String speciesType;
     private int speciesID;
+    private String speciesType;
+
 
     public Species(String speciesType, int speciesID) {
         this.speciesType = speciesType;

@@ -117,9 +117,7 @@ public class Catch {
         this.date = date;
     }
 
-    public int getWeightLB() {
-        return weightLB;
-    }
+    public int getWeightLB() { return weightLB; }
 
     public void setWeightLB(int weightLB) {
         this.weightLB = weightLB;
@@ -159,7 +157,7 @@ public class Catch {
 
     @Override
     public String toString() {
-        return "Catch{" + "catchID=" + catchID + ", photoID=" + photoID + ", speciesType='" + speciesType + '\'' + ", lakeName='" + lakeName + '\'' + ", weatherType='" + weatherType + '\'' + ", lakebedType='" + lakebedType + '\'' + ", swim='" + swim + '\'' + ", rig='" + rig + '\'' + ", bait='" + bait + '\'' + ", weightLB=" + weightLB +
+        return  "catchID=" + catchID + ", photoID=" + photoID + ", speciesType='" + speciesType + '\'' + ", lakeName='" + lakeName + '\'' + ", weatherType='" + weatherType + '\'' + ", lakebedType='" + lakebedType + '\'' + ", swim='" + swim + '\'' + ", rig='" + rig + '\'' + ", bait='" + bait + '\'' + ", weightLB=" + weightLB +
                 ", weightOZ=" + weightOZ + ", Time='" + Time + '\'' + ", depth=" + depth + ", distance=" + distance + '}';
     }
 }

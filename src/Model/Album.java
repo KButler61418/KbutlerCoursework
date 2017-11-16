@@ -6,18 +6,9 @@ public class Album {
     private String albumName;
 
 
-    public Album(int photoID, int albumID, String albumName) {
-        this.photoID = photoID;
+    public Album(int albumID, String albumName) {
         this.albumID = albumID;
         this.albumName = albumName;
-    }
-
-    public int getPhotoID() {
-        return photoID;
-    }
-
-    public void setPhotoID(int photoID) {
-        this.photoID = photoID;
     }
 
     public int getAlbumID() {
@@ -38,9 +29,8 @@ public class Album {
 
     @Override
     public String toString() {
-        return "INSERT TEXT HERE!! PHOTO CLASS";
-
-
+        return "albumID=" + albumID +
+                ", albumName='" + albumName + '\'';
     }
 }
 
