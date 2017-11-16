@@ -26,7 +26,7 @@ public class PhotoGUI extends Application {
 
         Label[] Tags = new Label[11];
 
-        Tags[0] = new Label ("Weight: 33lb 4oz");
+        Tags[0] = new Label ("Weight: ");
         Tags[1] = new Label (" Lake: Yateley South Lake");
         Tags[2] = new Label (" Swim: Car Park 1");
         Tags[3] = new Label (" Species: Mirror Carp");

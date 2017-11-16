@@ -34,6 +34,7 @@ public class HomeGUI extends Application {
 
                 ScrollPane scrollPane = new ScrollPane();
                 scrollPane.setFitToWidth(true);
+                scrollPane.setLayoutY(30);
                 scrollPane.setVmax(440);
                 scrollPane.setPrefSize(1360, 700);
                 scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
@@ -44,6 +45,32 @@ public class HomeGUI extends Application {
                 root.prefWidthProperty().bind(root.widthProperty());
                 root.prefHeightProperty().bind(root.heightProperty());
                 root.setPadding(new Insets(20));
+
+                Button home = new Button("Home");
+                home.setContentDisplay(ContentDisplay.TOP);
+                home.setLayoutX(20);
+
+                Button album = new Button("Album");
+                album.setContentDisplay(ContentDisplay.TOP);
+                album.setLayoutX(70);
+
+                Button table = new Button("Table");
+                table.setContentDisplay(ContentDisplay.TOP);
+                table.setLayoutX(123);
+
+                Button addPhoto = new Button("Add Photo");
+                addPhoto.setContentDisplay(ContentDisplay.TOP);
+                addPhoto.setLayoutX(170);
+
+                Button addAlbum = new Button("Add Album");
+                addAlbum.setContentDisplay(ContentDisplay.TOP);
+                addAlbum.setLayoutX(245);
+
+                home.setOnAction((ActionEvent ae) -> Peck());
+                album.setOnAction((ActionEvent ae) -> Dove());
+                table.setOnAction((ActionEvent ae) -> Dove());
+                addAlbum.setOnAction((ActionEvent ae) -> Peck());
+                addPhoto.setOnAction((ActionEvent ae) -> Dove());
 
                 Button button1 = new Button("Daryll Peck", new ImageView(Peck));
                 button1.setContentDisplay(ContentDisplay.TOP);
@@ -93,19 +120,20 @@ public class HomeGUI extends Application {
 
                 button1.setOnAction((ActionEvent ae) -> Peck());
                 button2.setOnAction((ActionEvent ae) -> Dove());
-                button3.setOnAction((ActionEvent ae) -> Ali());
+                button3.setOnAction((ActionEvent ae) -> Dove());
                 button4.setOnAction((ActionEvent ae) -> Peck());
                 button5.setOnAction((ActionEvent ae) -> Dove());
-                button6.setOnAction((ActionEvent ae) -> Ali());
+                button6.setOnAction((ActionEvent ae) -> Peck());
                 button7.setOnAction((ActionEvent ae) -> Peck());
                 button8.setOnAction((ActionEvent ae) -> Peck());
                 button9.setOnAction((ActionEvent ae) -> Dove());
-                button10.setOnAction((ActionEvent ae) -> Ali());
+                button10.setOnAction((ActionEvent ae) -> Dove());
                 button11.setOnAction((ActionEvent ae) -> Peck());
                 button12.setOnAction((ActionEvent ae) -> Dove());
-                button13.setOnAction((ActionEvent ae) -> Ali());
+                button13.setOnAction((ActionEvent ae) -> Peck());
                 button14.setOnAction((ActionEvent ae) -> Peck());
                 button15.setOnAction((ActionEvent ae) -> Peck());
+
 
                 root.add(button1, 0, 0);
                 root.add(button2, 1, 0);
@@ -132,7 +160,7 @@ public class HomeGUI extends Application {
                 stage.setHeight(500);
                 stage.setOnCloseRequest((WindowEvent we) -> terminate(we));
                 rootPane.getStylesheets().add("Gui/simple.css");
-                rootPane.getChildren().addAll(root, scrollPane);
+                rootPane.getChildren().addAll(root, scrollPane, home, addAlbum, addPhoto, table, album);
                 stage.show();
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
@@ -160,8 +188,8 @@ public class HomeGUI extends Application {
         ImageView Image1 = new ImageView(image1);
 
         VBox boxOfButtons = new VBox(20);
-        boxOfButtons.setLayoutX(700);
-        boxOfButtons.setLayoutY(20);
+        boxOfButtons.setLayoutX(300);
+        boxOfButtons.setLayoutY(500);
 
         Label[] Tags = new Label[11];
 
@@ -225,42 +253,6 @@ public class HomeGUI extends Application {
         stage.setOnCloseRequest((WindowEvent we) -> terminate(we));
         rootPane.getChildren().addAll(Image1, boxOfButtons);
         rootPane.getStylesheets().add("Gui/simple.css");
-        stage.show();
-    }
-
-    public static void Ali() {
-        Image image1 = new Image("Gui/20170912_134249.jpg", 650, 525, false, true);
-        ImageView Image1 = new ImageView(image1);
-
-        VBox boxOfButtons = new VBox(20);
-        boxOfButtons.setLayoutX(700);
-        boxOfButtons.setLayoutY(20);
-
-        Label[] Tags = new Label[11];
-
-        Tags[0] = new Label(" Weight: 35lb 0oz");
-        Tags[1] = new Label(" Lake: Yateley South Lake");
-        Tags[2] = new Label(" Swim: Car Park 1");
-        Tags[3] = new Label(" Species: Mirror Carp");
-        Tags[4] = new Label(" Rig: Chod Rig");
-        Tags[5] = new Label(" Bait: 12mm Squid Supreme");
-        Tags[6] = new Label(" Date: 21/09/17");
-        Tags[7] = new Label(" Time: 12:09");
-        Tags[8] = new Label(" Lake bed: Gravel");
-        Tags[9] = new Label(" Depth: 6 ft ");
-        Tags[10] = new Label(" Weather: Rainy");
-
-        boxOfButtons.getChildren().addAll(Tags);
-
-        Stage stage = new Stage();
-        stage.setTitle("Photo Test!");
-        Pane rootPane = new Pane();
-        stage.setScene(new Scene(rootPane));
-        stage.setWidth(1420);
-        stage.setHeight(750);
-        stage.setOnCloseRequest((WindowEvent we) -> terminate(we));
-        rootPane.getChildren().addAll(Image1, boxOfButtons);
-        rootPane.getStylesheets().add("Simple.css");
         stage.show();
     }
 }
