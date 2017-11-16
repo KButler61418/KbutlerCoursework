@@ -380,10 +380,31 @@ public class MainController extends Application {
 
         AddAlbumView.getChildren().addAll(AddAlbumInfo);
 
-
         Button buttonSubmit = new Button("Add Album");
         buttonSubmit.setLayoutX(815);
         buttonSubmit.setLayoutY(380);
+
+        Button home = new Button("Home");
+        home.setContentDisplay(ContentDisplay.TOP);
+        home.setLayoutX(20);
+        Button album = new Button("Album");
+        album.setContentDisplay(ContentDisplay.TOP);
+        album.setLayoutX(70);
+        Button tableview = new Button("Table");
+        tableview.setContentDisplay(ContentDisplay.TOP);
+        tableview.setLayoutX(123);
+        Button addPhoto = new Button("Add Photo");
+        addPhoto.setContentDisplay(ContentDisplay.TOP);
+        addPhoto.setLayoutX(170);
+        Button addAlbum = new Button("Add Album");
+        addAlbum.setContentDisplay(ContentDisplay.TOP);
+        addAlbum.setLayoutX(245);
+
+        home.setOnAction((ActionEvent ae) -> Home());
+        album.setOnAction((ActionEvent ae) -> Album());
+        tableview.setOnAction((ActionEvent ae) -> Table());
+        addAlbum.setOnAction((ActionEvent ae) -> AddAlbum());
+        addPhoto.setOnAction((ActionEvent ae) -> AddPhoto());
 
         Stage stage = new Stage();
         stage.setTitle("Add Album");
@@ -392,7 +413,7 @@ public class MainController extends Application {
         stage.setWidth(1420);
         stage.setHeight(600);
         rootPane.getStylesheets().add("Gui/simple.css");
-        rootPane.getChildren().addAll(scrollPane, AddAlbumView, buttonSubmit);
+        rootPane.getChildren().addAll(scrollPane, AddAlbumView, buttonSubmit, home, album, addAlbum, addPhoto, tableview);
         stage.show();
     }
 
@@ -486,6 +507,28 @@ public class MainController extends Application {
         buttonSubmit.setLayoutX(815);
         buttonSubmit.setLayoutY(380);
 
+        Button home = new Button("Home");
+        home.setContentDisplay(ContentDisplay.TOP);
+        home.setLayoutX(20);
+        Button album = new Button("Album");
+        album.setContentDisplay(ContentDisplay.TOP);
+        album.setLayoutX(70);
+        Button tableview = new Button("Table");
+        tableview.setContentDisplay(ContentDisplay.TOP);
+        tableview.setLayoutX(123);
+        Button addPhoto = new Button("Add Photo");
+        addPhoto.setContentDisplay(ContentDisplay.TOP);
+        addPhoto.setLayoutX(170);
+        Button addAlbum = new Button("Add Album");
+        addAlbum.setContentDisplay(ContentDisplay.TOP);
+        addAlbum.setLayoutX(245);
+
+        home.setOnAction((ActionEvent ae) -> Home());
+        album.setOnAction((ActionEvent ae) -> Album());
+        tableview.setOnAction((ActionEvent ae) -> Table());
+        addAlbum.setOnAction((ActionEvent ae) -> AddAlbum());
+        addPhoto.setOnAction((ActionEvent ae) -> AddPhoto());
+
         Stage stage = new Stage();
         stage.setTitle("Add Photo");
         Pane rootPane = new Pane();
@@ -493,8 +536,10 @@ public class MainController extends Application {
         stage.setWidth(1420);
         stage.setHeight(600);
         rootPane.getStylesheets().add("Gui/simple.css");
-        rootPane.getChildren().addAll(scrollPane, AddPhotoViewLeft, AddPhotoViewRight, locationLabel, choiceBox, buttonSubmit);
+        rootPane.getChildren().addAll(scrollPane, AddPhotoViewLeft, AddPhotoViewRight, locationLabel, choiceBox, buttonSubmit,
+                home, album, addAlbum, addPhoto, tableview);
         stage.show();
+
 
 
     }
