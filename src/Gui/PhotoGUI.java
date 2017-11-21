@@ -47,7 +47,7 @@ public class PhotoGUI extends Application {
         stage.setHeight(750);
         stage.setOnCloseRequest((WindowEvent we) -> terminate(we));
         rootPane.getChildren().addAll(Image1, boxOfButtons);
-        rootPane.getStylesheets().add("Gui/simple.css");
+        rootPane.getStylesheets().add("Controller/simple.css");
         stage.show();
 }
     public static void terminate(WindowEvent we)

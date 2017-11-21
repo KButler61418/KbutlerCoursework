@@ -159,7 +159,7 @@ public class HomeGUI extends Application {
                 stage.setWidth(1300);
                 stage.setHeight(500);
                 stage.setOnCloseRequest((WindowEvent we) -> terminate(we));
-                rootPane.getStylesheets().add("Gui/simple.css");
+                rootPane.getStylesheets().add("Controller/simple.css");
                 rootPane.getChildren().addAll(root, scrollPane, home, addAlbum, addPhoto, table, album);
                 stage.show();
             } catch (Exception ex) {
@@ -215,7 +215,7 @@ public class HomeGUI extends Application {
         stage.setHeight(750);
         stage.setOnCloseRequest((WindowEvent we) -> terminate(we));
         rootPane.getChildren().addAll(Image1, boxOfButtons);
-        rootPane.getStylesheets().add("Gui/simple.css");
+        rootPane.getStylesheets().add("Controller/simple.css");
         stage.show();
     }
 
@@ -252,7 +252,7 @@ public class HomeGUI extends Application {
         stage.setHeight(750);
         stage.setOnCloseRequest((WindowEvent we) -> terminate(we));
         rootPane.getChildren().addAll(Image1, boxOfButtons);
-        rootPane.getStylesheets().add("Gui/simple.css");
+        rootPane.getStylesheets().add("Controller/simple.css");
         stage.show();
     }
 }

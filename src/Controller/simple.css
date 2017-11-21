@@ -1,0 +1,55 @@
+.MenuButton {
+    -fx-text-fill: black;
+    -fx-font-size: 12;
+    -fx-font-family: "Arial Black";
+    -fx-padding: 8;
+    -fx-background-color: #26c122;
+    -fx-border-width: 2px;
+    -fx-border-color: black;
+}
+
+.FishButton{
+    -fx-text-fill: black;
+    -fx-font-size: 18;
+    -fx-font-family: "Impact";
+    -fx-background-color: #26c122;
+
+}
+
+.Pane {
+    -fx-text-fill: black;
+    -fx-font-size: 12;
+    -fx-font-family: "Arial Black";
+    -fx-background-color: #0a6d08;
+}
+
+.TextField{
+  -fx-text-fill: black;
+  -fx-font-size: 12;
+  -fx-font-family: "Arial Black";
+
+}
+
+.Combobox{
+  -fx-text-fill: black;
+  -fx-font-size: 12;
+  -fx-font-family: "Arial Black";
+
+}
+.Table{
+
+  -fx-text-fill: black;
+  -fx-font-size: 12;
+  -fx-font-family: "Arial Black";
+  -fx-background-color: #0a6d08;
+
+}
+
+.DatePicker{
+
+  -fx-text-fill: black;
+  -fx-font-size: 12;
+  -fx-font-family: "Arial Black";
+  -fx-background-color: #0a6d08;
+
+}

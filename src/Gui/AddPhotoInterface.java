@@ -123,7 +123,7 @@ public class AddPhotoInterface extends Application {
         stage.setWidth(1420);
         stage.setHeight(600);
         stage.setOnCloseRequest((WindowEvent we) -> terminate(we));
-        rootPane.getStylesheets().add("Gui/simple.css");
+        rootPane.getStylesheets().add("Controller/simple.css");
         rootPane.getChildren().addAll(scrollPane, boxOfButtons, locationLabel, choiceBox, buttonSubmit);
         stage.show();
     }

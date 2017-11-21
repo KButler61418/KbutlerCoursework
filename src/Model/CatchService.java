@@ -20,7 +20,7 @@ public class CatchService {
 
                 if (results != null) {
                     while (results.next()) {
-                        targetList.add(new Catch(results.getInt("catchID"), results.getInt("photoID"), results.getString("speciesType"), results.getString("lakeName"),results.getString("weatherType"), results.getString("lakebedType"), results.getString("swim"),results.getString("rig"),results.getString("bait"),results.getString("date"),results.getInt("weightLB"), results.getInt("weightOZ"),results.getString("time"),results.getFloat("depth"), results.getFloat("distance")));
+                        targetList.add(new Catch(results.getInt("catchID"), results.getInt("photoID"), results.getString("speciesType"), results.getString("lakeName"), results.getString("weatherType"), results.getString("lakebedType"), results.getString("swim"), results.getString("rig"), results.getString("bait"), results.getString("date"), results.getInt("weightLB"), results.getInt("weightOZ"), results.getString("time"), results.getFloat("depth"), results.getFloat("distance")));
                     }
                 }
             }
@@ -28,5 +28,4 @@ public class CatchService {
             System.out.println("Database select all error: " + resultsException.getMessage());
         }
     }
-
 }
