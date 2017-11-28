@@ -206,7 +206,7 @@ public class MainController extends Application {
             addLake.getStyleClass().add("MenuButton");
 
             home.setOnAction((ActionEvent ae) -> Home());
-            //album.setOnAction((ActionEvent ae) -> Album());
+            album.setOnAction((ActionEvent ae) -> Album());
             table.setOnAction((ActionEvent ae) -> Table());
             addLake.setOnAction((ActionEvent ae) -> AddLake());
             addAlbum.setOnAction((ActionEvent ae) -> AddAlbum());
@@ -395,6 +395,13 @@ public class MainController extends Application {
         addLake.setLayoutX(390);
         addLake.getStyleClass().add("MenuButton");
 
+        home.setOnAction((ActionEvent ae) -> Home());
+        album.setOnAction((ActionEvent ae) -> Album());
+        table.setOnAction((ActionEvent ae) -> Table());
+        addLake.setOnAction((ActionEvent ae) -> AddLake());
+        addAlbum.setOnAction((ActionEvent ae) -> AddAlbum());
+        addPhoto.setOnAction((ActionEvent ae) -> AddPhoto());
+
         Stage stage = new Stage();
         stage.setTitle("Photo Test!");
         Pane rootPane = new Pane();
@@ -462,6 +469,14 @@ public class MainController extends Application {
 
         boxOfButtons.getChildren().addAll(Tags);
 
+        home.setOnAction((ActionEvent ae) -> Home());
+        album.setOnAction((ActionEvent ae) -> Album());
+        table.setOnAction((ActionEvent ae) -> Table());
+        addLake.setOnAction((ActionEvent ae) -> AddLake());
+        addAlbum.setOnAction((ActionEvent ae) -> AddAlbum());
+        addPhoto.setOnAction((ActionEvent ae) -> AddPhoto());
+
+
         Stage stage = new Stage();
         stage.setTitle("Photo Test!");
         Pane rootPane = new Pane();
@@ -526,6 +541,13 @@ public class MainController extends Application {
         Tags[10] = new Label(" Weather: Rainy");
 
         boxOfButtons.getChildren().addAll(Tags);
+
+        home.setOnAction((ActionEvent ae) -> Home());
+        album.setOnAction((ActionEvent ae) -> Album());
+        table.setOnAction((ActionEvent ae) -> Table());
+        addLake.setOnAction((ActionEvent ae) -> AddLake());
+        addAlbum.setOnAction((ActionEvent ae) -> AddAlbum());
+        addPhoto.setOnAction((ActionEvent ae) -> AddPhoto());
 
         Stage stage = new Stage();
         stage.setTitle("Photo Test!");
