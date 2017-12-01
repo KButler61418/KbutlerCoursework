@@ -162,8 +162,8 @@ public class MainController extends Application {
             ScrollPane scrollPane = new ScrollPane();
             scrollPane.setFitToWidth(true);
             scrollPane.setLayoutY(30);
-            scrollPane.setVmax(440);
-            scrollPane.setPrefSize(1360, 700);
+            scrollPane.setVmax(700);
+            scrollPane.setPrefSize(1240, 900);
             scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
             scrollPane.getStyleClass().add("Pane");
 
