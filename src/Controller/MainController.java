@@ -3,6 +3,8 @@ package Controller;
 import Model.*;
 import Scenes.AddPhotosScene;
 import Scenes.CatchScene;
+import ServiceClasses.LakebedService;
+import Views.LakebedView;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
@@ -321,10 +323,33 @@ public class MainController extends Application {
         }
     }
 
+
+    public static void updateLists() {
+
+        ArrayList<Lakebed> allToppings = new ArrayList<>();
+
+        allToppings.clear();
+        LakebedService.selectAll(allToppings, database);
+
+        ArrayList<LakebedView> toppingViews = new ArrayList<>();
+        for (Lakebed t: allToppings) {
+            toppingViews.add(new LakebedView(
+                    t.getLakebedID(),LakebedService.selectLakebedById(t.getLakebedID(), database).getLakebedType()));
+                    System.out.println(allToppings);}
+
+        table.setItems(FXCollections.observableList(toppingViews));
+
+
+        //pizzaList.getItems().clear();
+        //PizzaService.selectAll(pizzaList.getItems(), database);
+    }
+
+
     public static void main(String[] args) {
 
         database = new DatabaseConnection("src/CourseworkDatabase.db");
 
+        updateLists();
 
         ArrayList<Catch> allToppings = new ArrayList<>();
 
