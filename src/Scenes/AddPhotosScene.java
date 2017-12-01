@@ -122,7 +122,8 @@ public class AddPhotosScene {
         Button buttonSubmit = new Button("Add Catch");
         buttonSubmit.setLayoutX(815);
         buttonSubmit.setLayoutY(380);
-        Button home = new Button("HomeScene");
+
+        Button home = new Button("Home");
         home.setContentDisplay(ContentDisplay.TOP);
         home.setLayoutX(19);
         home.getStyleClass().add("MenuButton");
@@ -157,6 +158,7 @@ public class AddPhotosScene {
         tableview.setOnAction((ActionEvent ae) -> Table());
         addAlbum.setOnAction((ActionEvent ae) -> AddAlbum());
         addPhoto.setOnAction((ActionEvent ae) -> AddPhoto());
+        buttonSubmit.setOnAction((ActionEvent ae) -> SubmitPhoto());
 
         Stage stage = new Stage();
         stage.setTitle("Add Photo");
@@ -166,9 +168,17 @@ public class AddPhotosScene {
         stage.setHeight(600);
         rootPane.getStylesheets().add("Controller/simple.css");
         rootPane.getChildren().addAll(scrollPane, AddPhotoViewLeft, AddPhotoViewRight, comboBox, RigComboBox, buttonSubmit,
-                home, album, addAlbum, addPhoto, tableview, datePicker);
+                home, album, addAlbum, addPhoto, tableview, datePicker, addLake);
         rootPane.getStyleClass().add("Pane");
         stage.show();
 
     }
+    private static void SubmitPhoto() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText("This feature is currently unavailable!!");
+
+        alert.showAndWait();
+    }
+
 }

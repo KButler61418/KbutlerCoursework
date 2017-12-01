@@ -2,15 +2,14 @@ package Scenes;
 
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ContentDisplay;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import javax.swing.*;
+
+import java.util.Optional;
 
 import static Controller.MainController.Table;
 import static Scenes.AddLakesScene.AddLake;
@@ -120,6 +119,7 @@ public class AddAlbumsScene {
         addAlbum.setOnAction((ActionEvent ae) -> AddAlbum());
         addPhoto.setOnAction((ActionEvent ae) -> AddPhoto());
         addLake.setOnAction((ActionEvent ae) -> AddLake());
+        buttonSubmit.setOnAction((ActionEvent ae) -> SubmitAlbum());
 
         Stage stage = new Stage();
         stage.setTitle("Add Album");
@@ -128,8 +128,16 @@ public class AddAlbumsScene {
         stage.setWidth(1420);
         stage.setHeight(600);
         rootPane.getStylesheets().add("Controller/simple.css");
-        rootPane.getChildren().addAll(scrollPane, AddAlbumView, buttonSubmit, home, album, addAlbum, addPhoto, tableview);
+        rootPane.getChildren().addAll(scrollPane, AddAlbumView, buttonSubmit, home, album, addLake, addAlbum, addPhoto, tableview);
         rootPane.getStyleClass().add("Pane");
         stage.show();
+    }
+
+    private static void SubmitAlbum() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText("This feature is currently unavailable!!");
+
+        alert.showAndWait();
     }
 }

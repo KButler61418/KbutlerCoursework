@@ -320,6 +320,7 @@ public class MainController extends Application {
             System.out.println(ex.getMessage());
         }
     }
+
     public static void main(String[] args) {
 
         database = new DatabaseConnection("src/CourseworkDatabase.db");

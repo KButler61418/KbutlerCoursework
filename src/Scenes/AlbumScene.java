@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import static Controller.MainController.Table;
 import static Scenes.AddAlbumsScene.AddAlbum;
 import static Scenes.AddLakesScene.AddLake;
+import static Scenes.CatchScene.CatchDisplay;
 
 public class AlbumScene {
 
@@ -23,7 +24,13 @@ public class AlbumScene {
         Image Peck = new Image("Gui/20170911_232450.jpg", 400, 300, false, true);  //filename, requestedWidth, requestedHeight, preserveRatio, smooth
         Image Ali = new Image("Gui/20170912_132539.jpg", 400, 300, false, true);
         Image Dove = new Image("Gui/20170912_134249.jpg", 400, 300, false, true);
-
+        Image Fish4 = new Image("Gui/20170414_102301 (2).jpg", 400, 300, false, true);
+        Image Fish5 = new Image("Gui/20170416_113607 (2).jpg", 400, 300, false, true);
+        Image Fish6 = new Image("Gui/20170529_000705.jpg", 400, 300, false, true);
+        Image Fish7 = new Image("Gui/20170806_081318.jpg", 400, 300, false, true);
+        Image Fish8 = new Image("Gui/20170910_021927.jpg", 400, 300, false, true);
+        Image Fish9 = new Image("Gui/20170911_193052.jpg", 400, 300, false, true);
+        Image Fish10 = new Image("Gui/20170913_165904.jpg", 400, 300, false, true);
 
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setFitToWidth(true);
@@ -84,31 +91,31 @@ public class AlbumScene {
         button3.setContentDisplay(ContentDisplay.TOP);
         button3.getStyleClass().add("FishButton");
 
-        Button button4 = new Button("Album 4", new ImageView(Peck));
+        Button button4 = new Button("Album 4", new ImageView(Fish4));
         button4.setContentDisplay(ContentDisplay.TOP);
         button4.getStyleClass().add("FishButton");
 
-        Button button5 = new Button("Album 5", new ImageView(Ali));
+        Button button5 = new Button("Album 5", new ImageView(Fish6));
         button5.setContentDisplay(ContentDisplay.TOP);
         button5.getStyleClass().add("FishButton");
 
-        Button button6 = new Button("Album 6", new ImageView(Dove));
+        Button button6 = new Button("Album 6", new ImageView(Fish8));
         button6.setContentDisplay(ContentDisplay.TOP);
         button6.getStyleClass().add("FishButton");
 
-        Button button7 = new Button("Album 7", new ImageView(Ali));
+        Button button7 = new Button("Album 7", new ImageView(Fish10));
         button7.setContentDisplay(ContentDisplay.TOP);
         button7.getStyleClass().add("FishButton");
 
-        Button button8 = new Button("Album 8", new ImageView(Peck));
+        Button button8 = new Button("Album 8", new ImageView(Fish5));
         button8.setContentDisplay(ContentDisplay.TOP);
         button8.getStyleClass().add("FishButton");
 
-        Button button9 = new Button("Album 9", new ImageView(Ali));
+        Button button9 = new Button("Album 9", new ImageView(Fish9));
         button9.setContentDisplay(ContentDisplay.TOP);
         button9.getStyleClass().add("FishButton");
 
-        Button button10 = new Button("Album 10", new ImageView(Dove));
+        Button button10 = new Button("Album 10", new ImageView(Fish10));
         button10.setContentDisplay(ContentDisplay.TOP);
         button10.getStyleClass().add("FishButton");
 
@@ -120,33 +127,33 @@ public class AlbumScene {
         button12.setContentDisplay(ContentDisplay.TOP);
         button12.getStyleClass().add("FishButton");
 
-        Button button13 = new Button("Album 13", new ImageView(Dove));
+        Button button13 = new Button("Album 13", new ImageView(Fish4));
         button13.setContentDisplay(ContentDisplay.TOP);
         button13.getStyleClass().add("FishButton");
 
-        Button button14 = new Button("Album 14", new ImageView(Ali));
+        Button button14 = new Button("Album 14", new ImageView(Fish6));
         button14.setContentDisplay(ContentDisplay.TOP);
         button14.getStyleClass().add("FishButton");
 
-        Button button15 = new Button("Album 15", new ImageView(Peck));
+        Button button15 = new Button("Album 15", new ImageView(Fish10));
         button15.setContentDisplay(ContentDisplay.TOP);
         button15.getStyleClass().add("FishButton");
 
-        /*button2.setOnAction((ActionEvent ae) -> Dove());
-        button3.setOnAction((ActionEvent ae) -> Ali());
-        button4.setOnAction((ActionEvent ae) -> Peck());
-        button5.setOnAction((ActionEvent ae) -> Dove());
-        button6.setOnAction((ActionEvent ae) -> Ali());
-        button7.setOnAction((ActionEvent ae) -> Peck());
-        button8.setOnAction((ActionEvent ae) -> Peck());
-        button9.setOnAction((ActionEvent ae) -> Dove());
-        button10.setOnAction((ActionEvent ae) -> Ali());
-        button11.setOnAction((ActionEvent ae) -> Peck());
-        button12.setOnAction((ActionEvent ae) -> Dove());
-        button13.setOnAction((ActionEvent ae) -> Ali());
-        button14.setOnAction((ActionEvent ae) -> Peck());
-        button15.setOnAction((ActionEvent ae) -> Peck());
-        */
+        button2.setOnAction((ActionEvent ae) -> CatchDisplay());
+        button3.setOnAction((ActionEvent ae) -> CatchDisplay());
+        button4.setOnAction((ActionEvent ae) -> CatchDisplay());
+        button5.setOnAction((ActionEvent ae) -> CatchDisplay());
+        button6.setOnAction((ActionEvent ae) -> CatchDisplay());
+        button7.setOnAction((ActionEvent ae) -> CatchDisplay());
+        button8.setOnAction((ActionEvent ae) -> CatchDisplay());
+        button9.setOnAction((ActionEvent ae) -> CatchDisplay());
+        button10.setOnAction((ActionEvent ae) -> CatchDisplay());
+        button11.setOnAction((ActionEvent ae) -> CatchDisplay());
+        button12.setOnAction((ActionEvent ae) -> CatchDisplay());
+        button13.setOnAction((ActionEvent ae) -> CatchDisplay());
+        button14.setOnAction((ActionEvent ae) -> CatchDisplay());
+        button15.setOnAction((ActionEvent ae) -> CatchDisplay());
+
 
         album.setOnAction((ActionEvent ae) -> Album());
         table.setOnAction((ActionEvent ae) -> Table());
@@ -176,7 +183,7 @@ public class AlbumScene {
         stage.setScene(new Scene(rootPane));
         stage.setWidth(1420);
         stage.setHeight(750);
-        rootPane.getChildren().addAll(root, scrollPane, home, album, addAlbum, addPhoto, table);
+        rootPane.getChildren().addAll(root, scrollPane, home, album, addAlbum, addPhoto, table,addLake);
         rootPane.getStylesheets().add("Controller/simple.css");
         rootPane.getStyleClass().add("Pane");
         stage.show();

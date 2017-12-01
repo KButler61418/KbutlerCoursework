@@ -2,14 +2,14 @@ package Scenes;
 
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ContentDisplay;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.util.Optional;
+
+import static Controller.MainController.database;
 import static Scenes.AddAlbumsScene.AddAlbum;
 import static Scenes.AlbumScene.Album;
 
@@ -105,6 +105,7 @@ public class AddLakesScene {
         addAlbum.setOnAction((ActionEvent ae) -> AddAlbum());
         addPhoto.setOnAction((ActionEvent ae) -> AddPhotosScene.AddPhoto());
         addLake.setOnAction((ActionEvent ae) -> AddLake());
+        buttonSubmit.setOnAction((ActionEvent ae)-> SubmitLake());
 
         Stage stage = new Stage();
         stage.setTitle("Add Lake");
@@ -117,5 +118,35 @@ public class AddLakesScene {
         rootPane.getStyleClass().add("Pane");
         stage.show();
     }
+    private static void SubmitLake() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText("This feature is currently unavailable!!");
+
+        alert.showAndWait();
+    }
+
+    /*public void createNewLake() {
+
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Create new pizza");
+        dialog.setHeaderText(null);
+        dialog.setContentText("Pizza's name:");
+        Optional<String> result = dialog.showAndWait();
+
+        if (result.isPresent() && !result.get().equals("")){
+            Lake newLake = new Lake(0, result.get());
+            LakeService.save(newLake, database);
+
+            ToppingView selectedTopping = toppingTable.getSelectionModel().getSelectedItem();
+            updateLists(database.lastNewId(), selectedTopping != null ? selectedTopping.getId() : 0);
+        }
+        else {
+            displayError("No name provided.");
+        }
+
+    }
+    */
+
 
 }
