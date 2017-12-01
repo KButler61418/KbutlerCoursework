@@ -1,4 +1,4 @@
-package Views;
+package Scenes;
 
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
@@ -12,15 +12,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import static Controller.MainController.Ali;
-import static Controller.MainController.Dove;
-import static Controller.MainController.Peck;
-import static Views.AddAlbums.AddAlbum;
-import static Views.AddLakes.AddLake;
-import static Views.AddPhotos.AddPhoto;
-import static Views.TableView.Table;
+import static Controller.MainController.Table;
+import static Scenes.AddAlbumsScene.AddAlbum;
+import static Scenes.AddLakesScene.AddLake;
 
-public class AlbumView {
+public class AlbumScene {
 
     public static void Album(){
 
@@ -77,7 +73,6 @@ public class AlbumView {
 
         Button button1 = new Button("Album 1", new ImageView(Peck));
         button1.setContentDisplay(ContentDisplay.TOP);
-        button1.setOnAction((ActionEvent ae) -> Peck());
         root.add(button1, 0, 0);
         button1.getStyleClass().add("FishButton");
 
@@ -137,7 +132,7 @@ public class AlbumView {
         button15.setContentDisplay(ContentDisplay.TOP);
         button15.getStyleClass().add("FishButton");
 
-        button2.setOnAction((ActionEvent ae) -> Dove());
+        /*button2.setOnAction((ActionEvent ae) -> Dove());
         button3.setOnAction((ActionEvent ae) -> Ali());
         button4.setOnAction((ActionEvent ae) -> Peck());
         button5.setOnAction((ActionEvent ae) -> Dove());
@@ -151,14 +146,13 @@ public class AlbumView {
         button13.setOnAction((ActionEvent ae) -> Ali());
         button14.setOnAction((ActionEvent ae) -> Peck());
         button15.setOnAction((ActionEvent ae) -> Peck());
+        */
 
-       // home.setOnAction((ActionEvent ae) -> Home());
         album.setOnAction((ActionEvent ae) -> Album());
         table.setOnAction((ActionEvent ae) -> Table());
         addAlbum.setOnAction((ActionEvent ae) -> AddAlbum());
-        addPhoto.setOnAction((ActionEvent ae) -> AddPhoto());
+        addPhoto.setOnAction((ActionEvent ae) -> AddPhotosScene.AddPhoto());
         addLake.setOnAction((ActionEvent ae) -> AddLake());
-
 
         root.add(button2, 1, 0);
         root.add(button3, 2, 0);

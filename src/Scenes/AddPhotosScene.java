@@ -1,4 +1,4 @@
-package Views;
+package Scenes;
 
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
@@ -9,11 +9,12 @@ import javafx.stage.Stage;
 
 import java.time.LocalDate;
 
-import static Views.AddAlbums.AddAlbum;
-import static Views.AlbumView.Album;
-import static Views.TableView.Table;
+import static Controller.MainController.Table;
+import static Scenes.AddAlbumsScene.AddAlbum;
+import static Scenes.AlbumScene.Album;
 
-public class AddPhotos {
+
+public class AddPhotosScene {
     public static TextField txtFieldWeight;
     public static TextField txtFieldWeather;
     public static TextField txtFieldLake;
@@ -121,7 +122,7 @@ public class AddPhotos {
         Button buttonSubmit = new Button("Add Catch");
         buttonSubmit.setLayoutX(815);
         buttonSubmit.setLayoutY(380);
-        Button home = new Button("Home");
+        Button home = new Button("HomeScene");
         home.setContentDisplay(ContentDisplay.TOP);
         home.setLayoutX(19);
         home.getStyleClass().add("MenuButton");
@@ -151,7 +152,7 @@ public class AddPhotos {
         addLake.setLayoutX(390);
         addLake.getStyleClass().add("MenuButton");
 
-        //home.setOnAction((ActionEvent ae) -> Home());
+        //home.setOnAction((ActionEvent ae) -> HomeScene());
         album.setOnAction((ActionEvent ae) -> Album());
         tableview.setOnAction((ActionEvent ae) -> Table());
         addAlbum.setOnAction((ActionEvent ae) -> AddAlbum());

@@ -46,7 +46,7 @@ public class HomeGUI extends Application {
                 root.prefHeightProperty().bind(root.heightProperty());
                 root.setPadding(new Insets(20));
 
-                Button home = new Button("Home");
+                Button home = new Button("HomeScene");
                 home.setContentDisplay(ContentDisplay.TOP);
                 home.setLayoutX(20);
 

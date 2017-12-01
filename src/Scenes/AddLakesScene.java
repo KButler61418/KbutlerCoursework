@@ -1,4 +1,4 @@
-package Views;
+package Scenes;
 
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
@@ -10,22 +10,19 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import static Views.AddPhotos.AddPhoto;
-import static Views.AlbumView.Album;
-import static Views.TableView.Table;
+import static Scenes.AddAlbumsScene.AddAlbum;
+import static Scenes.AlbumScene.Album;
 
 
-public class AddAlbums {
+public class AddLakesScene {
 
-    public static TextField txtFieldDistance;
-    public static TextField txtFieldDate;
-    public static TextField txtFieldPhoto1;
-    public static TextField txtFieldPhoto2;
-    public static TextField txtFieldPhoto3;
-    public static TextField txtFieldPhoto4;
-    public static TextField txtFieldPhoto5;
+    public static TextField txtFieldPostcode;
+    public static TextField txtFieldLakeName;
+    public static TextField txtFieldStreet;
+    public static TextField txtFieldTown;
+    public static TextField txtFieldCounty;
 
-    public static void AddAlbum() {
+    public static void AddLake() {
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setFitToWidth(true);
         scrollPane.setVmax(700);
@@ -39,46 +36,39 @@ public class AddAlbums {
         AddAlbumView.setLayoutY(20);
 
 
-        TextField[] AddAlbumInfo = new TextField[7];
+        TextField[] AddAlbumInfo = new TextField[5];
 
-        txtFieldDistance = new TextField();
-        txtFieldDistance.setPromptText("Album Name: ");
-        AddAlbumInfo[0] = txtFieldDistance;
+        txtFieldLakeName = new TextField();
+        txtFieldLakeName.setPromptText("Lake Name: ");
+        AddAlbumInfo[0] = txtFieldLakeName;
+        txtFieldLakeName.getStyleClass().add("TextField");
 
-        txtFieldDate = new TextField();
-        txtFieldDate.setPromptText("Enter Date: ");
-        AddAlbumInfo[1] = txtFieldDate;
+        txtFieldStreet = new TextField();
+        txtFieldStreet.setPromptText("Street: ");
+        AddAlbumInfo[1] = txtFieldStreet;
+        txtFieldStreet.getStyleClass().add("TextField");
 
-        txtFieldPhoto1 = new TextField();
-        txtFieldPhoto1.setPromptText("Photo 1: ");
-        AddAlbumInfo[2] = txtFieldPhoto1;
-        txtFieldPhoto1.getStyleClass().add("TextField");
+        txtFieldTown = new TextField();
+        txtFieldTown.setPromptText("Town: ");
+        AddAlbumInfo[2] = txtFieldTown;
+        txtFieldTown.getStyleClass().add("TextField");
 
-        txtFieldPhoto2 = new TextField();
-        txtFieldPhoto2.setPromptText("Photo 2: ");
-        AddAlbumInfo[3] = txtFieldPhoto2;
-        txtFieldPhoto2.getStyleClass().add("TextField");
+        txtFieldCounty = new TextField();
+        txtFieldCounty.setPromptText("County:  ");
+        AddAlbumInfo[3] = txtFieldCounty;
+        txtFieldCounty.getStyleClass().add("TextField");
 
-        txtFieldPhoto3 = new TextField();
-        txtFieldPhoto3.setPromptText("Photo 3: ");
-        AddAlbumInfo[4] = txtFieldPhoto3;
-        txtFieldPhoto3.getStyleClass().add("TextField");
-
-        txtFieldPhoto4 = new TextField();
-        txtFieldPhoto4.setPromptText("Photo 4: ");
-        AddAlbumInfo[5] = txtFieldPhoto4;
-        txtFieldPhoto4.getStyleClass().add("TextField");
-
-        txtFieldPhoto5 = new TextField();
-        txtFieldPhoto5.setPromptText("Photo 5: ");
-        AddAlbumInfo[6] = txtFieldPhoto5;
-        txtFieldPhoto5.getStyleClass().add("TextField");
+        txtFieldPostcode = new TextField();
+        txtFieldPostcode.setPromptText("Postcode : ");
+        AddAlbumInfo[4] = txtFieldPostcode;
+        txtFieldPostcode.getStyleClass().add("TextField");
 
         AddAlbumView.getChildren().addAll(AddAlbumInfo);
 
-        Button buttonSubmit = new Button("Add Album");
+        Button buttonSubmit = new Button("Add Lake");
         buttonSubmit.setLayoutX(815);
-        buttonSubmit.setLayoutY(380);
+        buttonSubmit.setLayoutY(250);
+        buttonSubmit.getStyleClass().add("MenuButton");
 
         Button home = new Button("Home");
         home.setContentDisplay(ContentDisplay.TOP);
@@ -110,20 +100,22 @@ public class AddAlbums {
         addLake.setLayoutX(390);
         addLake.getStyleClass().add("MenuButton");
 
+        //home.setOnAction((ActionEvent ae) -> HomeScene());
         album.setOnAction((ActionEvent ae) -> Album());
-        tableview.setOnAction((ActionEvent ae) -> Table());
         addAlbum.setOnAction((ActionEvent ae) -> AddAlbum());
-        addPhoto.setOnAction((ActionEvent ae) -> AddPhoto());
+        addPhoto.setOnAction((ActionEvent ae) -> AddPhotosScene.AddPhoto());
+        addLake.setOnAction((ActionEvent ae) -> AddLake());
 
         Stage stage = new Stage();
-        stage.setTitle("Add Album");
+        stage.setTitle("Add Lake");
         Pane rootPane = new Pane();
         stage.setScene(new Scene(rootPane));
         stage.setWidth(1420);
         stage.setHeight(600);
         rootPane.getStylesheets().add("Controller/simple.css");
-        rootPane.getChildren().addAll(scrollPane, AddAlbumView, buttonSubmit, home, album, addAlbum, addPhoto, tableview);
+        rootPane.getChildren().addAll(scrollPane, AddAlbumView, buttonSubmit, home, album, addAlbum, addPhoto, addLake, tableview);
         rootPane.getStyleClass().add("Pane");
         stage.show();
     }
+
 }

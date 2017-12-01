@@ -1,6 +1,8 @@
 package Controller;
 
 import Model.*;
+import Scenes.AddPhotosScene;
+import Scenes.CatchScene;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
@@ -18,15 +20,13 @@ import javafx.stage.WindowEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import static Views.AddAlbums.AddAlbum;
-import static Views.AddLakes.AddLake;
-import static Views.AddPhotos.AddPhoto;
-import static Views.AlbumView.Album;
-import static Views.TableView.Table;
+import static Scenes.AddAlbumsScene.AddAlbum;
+import static Scenes.AddLakesScene.AddLake;
+import static Scenes.AlbumScene.Album;
+import static Scenes.CatchScene.CatchDisplay;
 
 
 public class MainController extends Application {
@@ -34,8 +34,8 @@ public class MainController extends Application {
     private static ListView<Catch> CatchList = new ListView<>();
     private static javafx.scene.control.TableView table = new javafx.scene.control.TableView<>();
 
-    public static void Table() {
 
+    public static void Table() {
 
         table.setPrefSize(1000, 500);
         table.setLayoutY(80);
@@ -123,11 +123,11 @@ public class MainController extends Application {
         addLake.setLayoutX(390);
         addLake.getStyleClass().add("MenuButton");
 
-        //home.setOnAction((ActionEvent ae) -> Home());
         album.setOnAction((ActionEvent ae) -> Album());
         tableview.setOnAction((ActionEvent ae) -> Table());
         addAlbum.setOnAction((ActionEvent ae) -> AddAlbum());
-        addPhoto.setOnAction((ActionEvent ae) -> AddPhoto());
+        addPhoto.setOnAction((ActionEvent ae) -> AddPhotosScene.AddPhoto());
+        addLake.setOnAction((ActionEvent ae) -> AddLake());
 
         Stage stage = new Stage();
         stage.setTitle("Table");
@@ -135,7 +135,7 @@ public class MainController extends Application {
         stage.setScene(new Scene(rootPane));
         stage.setWidth(1300);
         stage.setHeight(500);
-        rootPane.getChildren().addAll(table, home, tableview, addAlbum, addPhoto, album, addLake);
+        rootPane.getChildren().addAll(table, tableview, home, addAlbum, addPhoto, album, addLake);
         rootPane.getStyleClass().add("Pane");
         table.getStyleClass().add("Table");
         rootPane.getStylesheets().add("Controller/simple.css");
@@ -152,7 +152,7 @@ public class MainController extends Application {
             Image Dove = new Image("Gui/20170912_134249.jpg", 400, 300, false, true);
             Image Fish4 = new Image("Gui/20170414_102301 (2).jpg", 400, 300, false, true);
             Image Fish5 = new Image("Gui/20170416_113607 (2).jpg", 400, 300, false, true);
-            Image Fish6= new Image("Gui/20170529_000705.jpg", 400, 300, false, true);
+            Image Fish6 = new Image("Gui/20170529_000705.jpg", 400, 300, false, true);
             Image Fish7 = new Image("Gui/20170806_081318.jpg", 400, 300, false, true);
             Image Fish8 = new Image("Gui/20170910_021927.jpg", 400, 300, false, true);
             Image Fish9 = new Image("Gui/20170911_193052.jpg", 400, 300, false, true);
@@ -205,12 +205,11 @@ public class MainController extends Application {
             addLake.setLayoutX(390);
             addLake.getStyleClass().add("MenuButton");
 
-            home.setOnAction((ActionEvent ae) -> Home());
             album.setOnAction((ActionEvent ae) -> Album());
             table.setOnAction((ActionEvent ae) -> Table());
-            addLake.setOnAction((ActionEvent ae) -> AddLake());
             addAlbum.setOnAction((ActionEvent ae) -> AddAlbum());
-            addPhoto.setOnAction((ActionEvent ae) -> AddPhoto());
+            addPhoto.setOnAction((ActionEvent ae) -> AddPhotosScene.AddPhoto());
+            addLake.setOnAction((ActionEvent ae) -> AddLake());
 
             Button button1 = new Button("35lb 1oz", new ImageView(Peck));
             button1.setContentDisplay(ContentDisplay.TOP);
@@ -273,21 +272,21 @@ public class MainController extends Application {
             button15.getStyleClass().add("FishButton");
 
 
-            button1.setOnAction((ActionEvent ae) -> Peck());
-            button2.setOnAction((ActionEvent ae) -> Dove());
-            button3.setOnAction((ActionEvent ae) -> Ali());
-            button4.setOnAction((ActionEvent ae) -> Peck());
-            button5.setOnAction((ActionEvent ae) -> Dove());
-            button6.setOnAction((ActionEvent ae) -> Ali());
-            button7.setOnAction((ActionEvent ae) -> Peck());
-            button8.setOnAction((ActionEvent ae) -> Peck());
-            button9.setOnAction((ActionEvent ae) -> Dove());
-            button10.setOnAction((ActionEvent ae) -> Ali());
-            button11.setOnAction((ActionEvent ae) -> Peck());
-            button12.setOnAction((ActionEvent ae) -> Dove());
-            button13.setOnAction((ActionEvent ae) -> Ali());
-            button14.setOnAction((ActionEvent ae) -> Peck());
-            button15.setOnAction((ActionEvent ae) -> Peck());
+            button1.setOnAction((ActionEvent ae) -> CatchDisplay());
+            button2.setOnAction((ActionEvent ae) -> CatchDisplay());
+            button3.setOnAction((ActionEvent ae) -> CatchDisplay());
+            button4.setOnAction((ActionEvent ae) -> CatchDisplay());
+            button5.setOnAction((ActionEvent ae) -> CatchDisplay());
+            button6.setOnAction((ActionEvent ae) -> CatchDisplay());
+            button7.setOnAction((ActionEvent ae) -> CatchDisplay());
+            button8.setOnAction((ActionEvent ae) -> CatchDisplay());
+            button9.setOnAction((ActionEvent ae) -> CatchDisplay());
+            button10.setOnAction((ActionEvent ae) -> CatchDisplay());
+            button11.setOnAction((ActionEvent ae) -> CatchDisplay());
+            button12.setOnAction((ActionEvent ae) -> CatchDisplay());
+            button13.setOnAction((ActionEvent ae) -> CatchDisplay());
+            button14.setOnAction((ActionEvent ae) -> CatchDisplay());
+            button15.setOnAction((ActionEvent ae) -> CatchDisplay());
 
             root.add(button1, 0, 0);
             root.add(button2, 1, 0);
@@ -314,254 +313,13 @@ public class MainController extends Application {
             stage.setHeight(500);
             stage.setOnCloseRequest((WindowEvent we) -> terminate(we));
             rootPane.getStylesheets().add("Controller/simple.css");
-            rootPane.getChildren().addAll(root, scrollPane, home, addAlbum, addPhoto,addLake, table, album);
+            rootPane.getChildren().addAll(root, scrollPane, home, addAlbum, addPhoto, addLake, table, album);
             rootPane.getStyleClass().add("Pane");
             stage.show();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
     }
-
-    private static void Home() {
-
-    }
-
-    public static void terminate(WindowEvent we) {
-        Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation");
-        alert.setContentText("Are you sure you want to quit?");
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK) {
-            System.out.println("Closing application");
-            System.exit(0);
-
-        } else {
-            we.consume();
-        }
-    }
-
-
-    public static void Peck() {
-
-        Image image1 = new Image("Gui/20170911_232450.jpg", 650, 525, false, true);
-        ImageView Image1 = new ImageView(image1);
-
-        VBox boxOfButtons = new VBox(20);
-        boxOfButtons.setLayoutX(300);
-        boxOfButtons.setLayoutY(500);
-
-        Label[] Tags = new Label[11];
-
-        Tags[0] = new Label("Weight: 35lb 0oz");
-        Tags[1] = new Label("Lake: Yateley South Lake");
-        Tags[2] = new Label("Swim: Car Park 1");
-        Tags[3] = new Label("Species: Mirror Carp");
-        Tags[4] = new Label("Rig: Chod Rig");
-        Tags[5] = new Label("Bait: 12mm Squid Supreme");
-        Tags[6] = new Label("Date: 21/09/17");
-        Tags[7] = new Label("Time: 12:09");
-        Tags[8] = new Label("Lake bed: Gravel");
-        Tags[9] = new Label("Depth: 6 ft ");
-        Tags[10] = new Label("Weather: Rainy");
-
-        boxOfButtons.getChildren().addAll(Tags);
-        Button home = new Button("Home");
-        home.setContentDisplay(ContentDisplay.TOP);
-        home.setLayoutX(19);
-        home.getStyleClass().add("MenuButton");
-
-        Button album = new Button("Album");
-        album.setContentDisplay(ContentDisplay.TOP);
-        album.setLayoutX(80);
-        album.getStyleClass().add("MenuButton");
-
-        Button table = new Button("Table");
-        table.setContentDisplay(ContentDisplay.TOP);
-        table.setLayoutX(145);
-        table.getStyleClass().add("MenuButton");
-
-        Button addPhoto = new Button("Add Photo");
-        addPhoto.setContentDisplay(ContentDisplay.TOP);
-        addPhoto.setLayoutX(205);
-        addPhoto.getStyleClass().add("MenuButton");
-
-        Button addAlbum = new Button("Add Album");
-        addAlbum.setContentDisplay(ContentDisplay.TOP);
-        addAlbum.setLayoutX(295);
-        addAlbum.getStyleClass().add("MenuButton");
-
-        Button addLake = new Button("Add Lake");
-        addLake.setContentDisplay(ContentDisplay.TOP);
-        addLake.setLayoutX(390);
-        addLake.getStyleClass().add("MenuButton");
-
-        home.setOnAction((ActionEvent ae) -> Home());
-        album.setOnAction((ActionEvent ae) -> Album());
-        table.setOnAction((ActionEvent ae) -> Table());
-        addLake.setOnAction((ActionEvent ae) -> AddLake());
-        addAlbum.setOnAction((ActionEvent ae) -> AddAlbum());
-        addPhoto.setOnAction((ActionEvent ae) -> AddPhoto());
-
-        Stage stage = new Stage();
-        stage.setTitle("Photo Test!");
-        Pane rootPane = new Pane();
-        stage.setScene(new Scene(rootPane));
-        stage.setWidth(1420);
-        stage.setHeight(750);
-        rootPane.getChildren().addAll(Image1, boxOfButtons, home, addAlbum, addLake, addPhoto, album, table);
-        rootPane.getStylesheets().add("Controller/simple.css");
-        stage.show();
-    }
-
-
-    public static void Dove() {
-
-        Image image1 = new Image("Gui/20170912_132539.jpg", 650, 525, false, true);
-        ImageView Image1 = new ImageView(image1);
-
-        Button home = new Button("Home");
-        home.setContentDisplay(ContentDisplay.TOP);
-        home.setLayoutX(19);
-        home.getStyleClass().add("MenuButton");
-
-        Button album = new Button("Album");
-        album.setContentDisplay(ContentDisplay.TOP);
-        album.setLayoutX(80);
-        album.getStyleClass().add("MenuButton");
-
-        Button table = new Button("Table");
-        table.setContentDisplay(ContentDisplay.TOP);
-        table.setLayoutX(145);
-        table.getStyleClass().add("MenuButton");
-
-        Button addPhoto = new Button("Add Photo");
-        addPhoto.setContentDisplay(ContentDisplay.TOP);
-        addPhoto.setLayoutX(205);
-        addPhoto.getStyleClass().add("MenuButton");
-
-        Button addAlbum = new Button("Add Album");
-        addAlbum.setContentDisplay(ContentDisplay.TOP);
-        addAlbum.setLayoutX(295);
-        addAlbum.getStyleClass().add("MenuButton");
-
-        Button addLake = new Button("Add Lake");
-        addLake.setContentDisplay(ContentDisplay.TOP);
-        addLake.setLayoutX(390);
-        addLake.getStyleClass().add("MenuButton");
-
-        VBox boxOfButtons = new VBox(20);
-        boxOfButtons.setLayoutX(700);
-        boxOfButtons.setLayoutY(20);
-
-        Label[] Tags = new Label[11];
-
-        Tags[0] = new Label(" Weight: 35lb 0oz");
-        Tags[1] = new Label(" Lake: Yateley South Lake");
-        Tags[2] = new Label(" Swim: Car Park 1");
-        Tags[3] = new Label(" Species: Mirror Carp");
-        Tags[4] = new Label(" Rig: Chod Rig");
-        Tags[5] = new Label(" Bait: 12mm Squid Supreme");
-        Tags[6] = new Label(" Date: 21/09/17");
-        Tags[7] = new Label(" Time: 12:09");
-        Tags[8] = new Label(" Lake bed: Gravel");
-        Tags[9] = new Label(" Depth: 6 ft ");
-        Tags[10] = new Label(" Weather: Rainy");
-
-        boxOfButtons.getChildren().addAll(Tags);
-
-        home.setOnAction((ActionEvent ae) -> Home());
-        album.setOnAction((ActionEvent ae) -> Album());
-        table.setOnAction((ActionEvent ae) -> Table());
-        addLake.setOnAction((ActionEvent ae) -> AddLake());
-        addAlbum.setOnAction((ActionEvent ae) -> AddAlbum());
-        addPhoto.setOnAction((ActionEvent ae) -> AddPhoto());
-
-
-        Stage stage = new Stage();
-        stage.setTitle("Photo Test!");
-        Pane rootPane = new Pane();
-        stage.setScene(new Scene(rootPane));
-        stage.setWidth(1420);
-        stage.setHeight(750);
-        rootPane.getChildren().addAll(Image1, boxOfButtons, home, album, addPhoto, addAlbum, addLake, table);
-        rootPane.getStylesheets().add("Controller/simple.css");
-        stage.show();
-    }
-
-    public static void Ali() {
-        Image image1 = new Image("Gui/20170912_134249.jpg", 650, 525, false, true);
-        ImageView Image1 = new ImageView(image1);
-
-        Button home = new Button("Home");
-        home.setContentDisplay(ContentDisplay.TOP);
-        home.setLayoutX(19);
-        home.getStyleClass().add("MenuButton");
-
-        Button album = new Button("Album");
-        album.setContentDisplay(ContentDisplay.TOP);
-        album.setLayoutX(80);
-        album.getStyleClass().add("MenuButton");
-
-        Button table = new Button("Table");
-        table.setContentDisplay(ContentDisplay.TOP);
-        table.setLayoutX(145);
-        table.getStyleClass().add("MenuButton");
-
-        Button addPhoto = new Button("Add Photo");
-        addPhoto.setContentDisplay(ContentDisplay.TOP);
-        addPhoto.setLayoutX(205);
-        addPhoto.getStyleClass().add("MenuButton");
-
-        Button addAlbum = new Button("Add Album");
-        addAlbum.setContentDisplay(ContentDisplay.TOP);
-        addAlbum.setLayoutX(295);
-        addAlbum.getStyleClass().add("MenuButton");
-
-        Button addLake = new Button("Add Lake");
-        addLake.setContentDisplay(ContentDisplay.TOP);
-        addLake.setLayoutX(390);
-        addLake.getStyleClass().add("MenuButton");
-
-        VBox boxOfButtons = new VBox(20);
-        boxOfButtons.setLayoutX(700);
-        boxOfButtons.setLayoutY(20);
-
-        Label[] Tags = new Label[11];
-
-        Tags[0] = new Label(" Weight: 35lb 0oz");
-        Tags[1] = new Label(" Lake: Yateley South Lake");
-        Tags[2] = new Label(" Swim: Car Park 1");
-        Tags[3] = new Label(" Species: Mirror Carp");
-        Tags[4] = new Label(" Rig: Chod Rig");
-        Tags[5] = new Label(" Bait: 12mm Squid Supreme");
-        Tags[6] = new Label(" Date: 21/09/17");
-        Tags[7] = new Label(" Time: 12:09");
-        Tags[8] = new Label(" Lake bed: Gravel");
-        Tags[9] = new Label(" Depth: 6 ft ");
-        Tags[10] = new Label(" Weather: Rainy");
-
-        boxOfButtons.getChildren().addAll(Tags);
-
-        home.setOnAction((ActionEvent ae) -> Home());
-        album.setOnAction((ActionEvent ae) -> Album());
-        table.setOnAction((ActionEvent ae) -> Table());
-        addLake.setOnAction((ActionEvent ae) -> AddLake());
-        addAlbum.setOnAction((ActionEvent ae) -> AddAlbum());
-        addPhoto.setOnAction((ActionEvent ae) -> AddPhoto());
-
-        Stage stage = new Stage();
-        stage.setTitle("Photo Test!");
-        Pane rootPane = new Pane();
-        stage.setScene(new Scene(rootPane));
-        stage.setWidth(1420);
-        stage.setHeight(750);
-        rootPane.getChildren().addAll(Image1, boxOfButtons, home, album, addAlbum, addLake, addPhoto, table);
-        rootPane.getStylesheets().add("Simple.css");
-        stage.show();
-    }
-
-
-
     public static void main(String[] args) {
 
         database = new DatabaseConnection("src/CourseworkDatabase.db");
@@ -600,5 +358,19 @@ public class MainController extends Application {
 
         launch(args);
 
+    }
+
+    public static void terminate(WindowEvent we) {
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setContentText("Are you sure you want to quit?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            System.out.println("Closing application");
+            System.exit(0);
+
+        } else {
+            we.consume();
+        }
     }
 }
