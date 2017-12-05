@@ -17,6 +17,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class main extends Application {
 
@@ -29,7 +30,6 @@ public class main extends Application {
 
         database = new DatabaseConnection("src/CourseworkDatabase.db");
 
-
         ArrayList<Catch> allToppings = new ArrayList<>();
 
         allToppings.clear();
@@ -40,27 +40,6 @@ public class main extends Application {
         table.setItems(FXCollections.observableArrayList(allToppings));
         CatchService.selectAll(allToppings, database);
 
-        ArrayList<Catch> testList = new ArrayList<>();
-        for (Catch c : testList) {
-            System.out.println(c);
-        }
-
-        ArrayList<Album> AlbumList = new ArrayList<>();
-
-        AlbumService.selectAll(AlbumList, database);
-
-        for (Album d : AlbumList) {
-            System.out.println(d);
-        }
-
-        ArrayList<Species> SpeciesList = new ArrayList<>();
-
-        SpeciesService.selectAll(SpeciesList, database);
-
-        for (Species a : SpeciesList) {
-            System.out.println(a);
-        }
-
         launch(args);
 
     }
@@ -69,7 +48,7 @@ public class main extends Application {
     public void start(Stage stage) throws Exception {
         BorderPane root = new BorderPane();
         Scene scene = new Scene(root, 1024, 768);
-        scene.getStylesheets().add("Resources/stylesheet.css");
+        scene.getStylesheets().add("Controller/simple.css");
         stage.setTitle("Pizza Project");
         stage.setResizable(false);
         stage.setScene(scene);

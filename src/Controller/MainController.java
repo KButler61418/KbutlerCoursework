@@ -3,7 +3,6 @@ package Controller;
 import Model.*;
 import Scenes.AddPhotosScene;
 import Scenes.CatchScene;
-import ServiceClasses.LakebedService;
 import Views.LakebedView;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -39,7 +38,7 @@ public class MainController extends Application {
 
     public static void Table() {
 
-        table.setPrefSize(1000, 500);
+        table.setPrefSize(1200, 500);
         table.setLayoutY(80);
         table.setLayoutX(50);
 
@@ -70,6 +69,10 @@ public class MainController extends Application {
         TableColumn swimColumn = new TableColumn<>("Swim");
         swimColumn.setCellValueFactory(new PropertyValueFactory<>("swim"));
         table.getColumns().add(swimColumn);
+
+        TableColumn rigColumn = new TableColumn<>("Rig");
+        rigColumn.setCellValueFactory(new PropertyValueFactory<>("rig"));
+        table.getColumns().add(rigColumn);
 
         TableColumn baitColumn = new TableColumn<>("Bait");
         baitColumn.setCellValueFactory(new PropertyValueFactory<>("bait"));
@@ -324,7 +327,7 @@ public class MainController extends Application {
     }
 
 
-    public static void updateLists() {
+    /* public static void updateLists() {
 
         ArrayList<Lakebed> allToppings = new ArrayList<>();
 
@@ -343,13 +346,11 @@ public class MainController extends Application {
         //pizzaList.getItems().clear();
         //PizzaService.selectAll(pizzaList.getItems(), database);
     }
-
+*/
 
     public static void main(String[] args) {
 
         database = new DatabaseConnection("src/CourseworkDatabase.db");
-
-        updateLists();
 
         ArrayList<Catch> allToppings = new ArrayList<>();
 
@@ -360,27 +361,6 @@ public class MainController extends Application {
 
         table.setItems(FXCollections.observableArrayList(allToppings));
         CatchService.selectAll(allToppings, database);
-
-        ArrayList<Catch> testList = new ArrayList<>();
-        for (Catch c : testList) {
-            System.out.println(c);
-        }
-
-        ArrayList<Album> AlbumList = new ArrayList<>();
-
-        AlbumService.selectAll(AlbumList, database);
-
-        for (Album d : AlbumList) {
-            System.out.println(d);
-        }
-
-        ArrayList<Species> SpeciesList = new ArrayList<>();
-
-        SpeciesService.selectAll(SpeciesList, database);
-
-        for (Species a : SpeciesList) {
-            System.out.println(a);
-        }
 
         launch(args);
 
