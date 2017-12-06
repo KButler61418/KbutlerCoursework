@@ -1,5 +1,6 @@
 package Gui;
 
+import Model.CatchService;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
@@ -17,6 +18,8 @@ import javafx.stage.WindowEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import java.util.Optional;
+
+import static Controller.MainController.database;
 
 
 public class HomeGUI extends Application {
@@ -191,9 +194,14 @@ public class HomeGUI extends Application {
         boxOfButtons.setLayoutX(300);
         boxOfButtons.setLayoutY(500);
 
+        System.out.println("Photo!!");
+        System.out.println(CatchService.selectByID(1,  database));
+
         Label[] Tags = new Label[11];
 
-        Tags[0] = new Label("Weight: 35lb 0oz");
+
+
+        Tags[0] = new Label("Weight: 33lb");
         Tags[1] = new Label("Lake: Yateley South Lake");
         Tags[2] = new Label("Swim: Car Park 1");
         Tags[3] = new Label("Species: Mirror Carp");

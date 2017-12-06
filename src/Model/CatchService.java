@@ -43,47 +43,68 @@ public class CatchService {
             System.out.println("Database select all error: " + resultsException.getMessage());
         }
     }
-    public static void JoinCatchSpecies (List <String> Species123List, DatabaseConnection database) {
+    public static Catch selectByID(int CatchID, DatabaseConnection database) {
 
-        PreparedStatement statement = database.newStatement("SELECT Species.speciesType, Catch.weightLB, Catch.date FROM Species INNER JOIN Catch ON Catch.speciesID = Species.speciesID");
+        Catch result = null;
 
-        try {
-            if (statement != null) {
+        PreparedStatement statement = database.newStatement("SELECT catchID,photoID,speciesID,lakeID,weatherType,lakebedType,swim,rig,bait,date,weightLB,weightOZ,time,depth,distance FROM catch WHERE CatchID = ?");
+        PreparedStatement statement2 = database.newStatement("SELECT Species.speciesType, Catch.weightLB, Catch.date FROM Species INNER JOIN Catch ON Catch.speciesID = Species.speciesID WHERE CatchID = ?");
+        PreparedStatement statement3 = database.newStatement("SELECT Lake.lakeName, Catch.weightLB FROM Lake INNER JOIN Catch ON Catch.lakeID =  Lake.lakeID WHERE CatchID = ?");
+        PreparedStatement statement4 = database.newStatement("SELECT Swim.swimName, Catch.weightLB FROM Swim INNER JOIN Catch ON Swim.swimID = Catch.swim WHERE CatchID = ?");
+        PreparedStatement statement5 = database.newStatement("SELECT Weather.weatherType, Catch.weatherType FROM Weather INNER JOIN Catch ON Weather.weatherID = Catch.weatherType WHERE CatchID = ?");
+        PreparedStatement statement6 = database.newStatement("SELECT Lakebed.LakebedType FROM Lakebed INNER JOIN Catch ON Lakebed.lakebedID = Catch.lakebedType WHERE CatchID = ?");
+        PreparedStatement statement7 = database.newStatement("SELECT Rig.rigType FROM Rig INNER JOIN Catch ON Rig.rigID = Catch.rig WHERE CatchID = ?");
 
-                ResultSet results = database.executeQuery(statement);
-                ResultSetMetaData rsmd = results.getMetaData();
-
-                String PrintResults = results.toString();
+            try {
+                if (statement != null) {
 
 
-                if (results != null) {
-                    while (results.next()) {
-                        Species123List.add(new String(results.getString("speciesType")));
-                        Species123List.add(new String(results.getString("WeightLB")));
-                        System.out.println(statement.toString());
-                        System.out.println(rsmd.toString());
-                        System.out.println(PrintResults);
+                    statement.setInt(1, CatchID);
+                    statement2.setInt(1, CatchID);
+                    statement3.setInt(1, CatchID);
+                    statement4.setInt(1, CatchID);
+                    statement5.setInt(1, CatchID);
+                    statement6.setInt(1, CatchID);
+                    statement7.setInt(1, CatchID);
+
+
+                    ResultSet results = database.executeQuery(statement);
+                    ResultSet results2 = database.executeQuery(statement2);
+                    ResultSet results3 = database.executeQuery(statement3);
+                    ResultSet results4 = database.executeQuery(statement4);
+                    ResultSet results5 = database.executeQuery(statement5);
+                    ResultSet results6 = database.executeQuery(statement6);
+                    ResultSet results7 = database.executeQuery(statement7);
+
+                    if (results != null) {
+                        result = new Catch(results.getInt("catchID"), results.getInt("photoID"), results2.getString("speciesType"), results3.getString("lakeName"), results5.getString("weatherType"), results6.getString("lakebedType"), results4.getString("swimName"), results7.getString("rigType"), results.getString("bait"), results.getString("date"), results.getInt("weightLB"), results.getInt("weightOZ"), results.getString("time"), results.getFloat("depth"), results.getFloat("distance"));
                     }
                 }
+            } catch (SQLException resultsException) {
+                System.out.println("Database select by id error: " + resultsException.getMessage());
+            }
 
-                ArrayList <String> SpeciesType = new ArrayList<String>();
-                ArrayList<String> Weight = new ArrayList<String>();
+            return result;
+        }
+    /* public static void save(Catch itemToSave, DatabaseConnection database) {
 
-                while (results.next()) {
-                    SpeciesType.add(results.getString(1));
-                    Weight.add(results.getString(2));
-                }
+        Catch existingItem = null;
+        if (itemToSave.getCatchID() != 0) existingItem = selectById(itemToSave.getCatchID(), database);
 
-                // finally turn the array lists into arrays - if really needed
-                String[] nameArr = new String[SpeciesType.size()];
-                nameArr = SpeciesType.toArray(nameArr);
-
-                String[] subjectArr = new String[Weight.size()];
-                subjectArr = Weight.toArray(subjectArr);
-
+        try {
+            if (existingItem == null) {
+                PreparedStatement statement = database.newStatement("INSERT INTO Pizzas (name) VALUES (?)");
+                statement.setString(1, itemToSave.getName());
+                database.executeUpdate(statement);
+            }
+            else {
+                PreparedStatement statement = database.newStatement("UPDATE Pizzas SET name = ? WHERE id = ?");
+                statement.setString(1, itemToSave.getName());
+                statement.setInt(2, itemToSave.getId());
+                database.executeUpdate(statement);
             }
         } catch (SQLException resultsException) {
-            System.out.println("Database select Catch Species error: " + resultsException.getMessage());
+            System.out.println("Database saving error: " + resultsException.getMessage());
         }
-    }
+    } */
 }

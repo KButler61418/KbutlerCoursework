@@ -1,5 +1,7 @@
 package Scenes;
 
+import Model.Catch;
+import Model.CatchService;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,6 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import static Controller.MainController.Table;
+import static Controller.MainController.database;
 import static Scenes.AddAlbumsScene.AddAlbum;
 import static Scenes.AddLakesScene.AddLake;
 import static Scenes.AlbumScene.Album;
@@ -59,7 +62,10 @@ public class CatchScene {
 
         Label[] Tags = new Label[11];
 
-        Tags[0] = new Label(" Weight: 35lb 0oz");
+        System.out.println("Photo!!");
+        System.out.println(CatchService.selectByID(1,  database));
+
+        Tags[0] = new Label(" Weight: ");
         Tags[1] = new Label(" Lake: Yateley South Lake");
         Tags[2] = new Label(" Swim: Car Park 1");
         Tags[3] = new Label(" Species: Mirror Carp");

@@ -168,7 +168,7 @@ public class MainController extends Application {
             scrollPane.setFitToWidth(true);
             scrollPane.setLayoutY(30);
             scrollPane.setVmax(700);
-            scrollPane.setPrefSize(1240, 900);
+            scrollPane.setPrefSize(1400, 900);
             scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
             scrollPane.getStyleClass().add("Pane");
 
@@ -326,6 +326,25 @@ public class MainController extends Application {
         }
     }
 
+   /* public void createNewPizza() {
+
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Create new pizza");
+        dialog.setHeaderText(null);
+        dialog.setContentText("Pizza's name:");
+        Optional<String> result = dialog.showAndWait();
+
+        if (result.isPresent() && !result.get().equals("")){
+            Catch newPizza = new Catch(0, result.get());
+            CatchService.save(newPizza, database);
+
+        }
+        else {
+            displayError("No name provided.");
+        }
+
+    }
+    */
 
     /* public static void updateLists() {
 
@@ -348,6 +367,9 @@ public class MainController extends Application {
     }
 */
 
+    private ListView<Catch> CatchPhotoList;
+
+
     public static void main(String[] args) {
 
         database = new DatabaseConnection("src/CourseworkDatabase.db");
@@ -362,7 +384,13 @@ public class MainController extends Application {
         table.setItems(FXCollections.observableArrayList(allToppings));
         CatchService.selectAll(allToppings, database);
 
-        launch(args);
+        System.out.println(CatchService.selectByID(1,  database));
+        System.out.println(CatchService.selectByID(2, database));
+        System.out.println(CatchService.selectByID(3, database));
+        System.out.println(CatchService.selectByID(4, database));
+
+
+       launch(args);
 
     }
 
