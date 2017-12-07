@@ -1,5 +1,7 @@
 package Scenes;
 
+import Model.Catch;
+import Model.CatchService;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -8,14 +10,17 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 import static Controller.MainController.Table;
+import static Controller.MainController.database;
 import static Scenes.AddAlbumsScene.AddAlbum;
 import static Scenes.AlbumScene.Album;
 
 
 public class AddPhotosScene {
-    public static TextField txtFieldWeight;
+    public static TextField txtFieldWeightlb;
+    public static TextField txtFieldWeightoz;
     public static TextField txtFieldWeather;
     public static TextField txtFieldLake;
     public static TextField txtFieldSwim;
@@ -24,6 +29,9 @@ public class AddPhotosScene {
     public static TextField txtFieldTime;
     public static TextField txtFieldDistance;
     public static TextField txtFieldDepth;
+    public static ComboBox comboBox;
+    public static ComboBox rigcomboBox;
+    public static ComboBox RigComboBox;
 
     public static void AddPhoto() {
 
@@ -45,26 +53,25 @@ public class AddPhotosScene {
         TextField[] AddTagsL = new TextField[6];
         TextField[] AddTagsR = new TextField[3];
 
-        txtFieldWeight = new TextField();
-        txtFieldWeight.setPromptText("Enter Weight: ");
-        AddTagsL[0] = txtFieldWeight;
-        txtFieldWeight.getStyleClass().add("TextField");
+        txtFieldWeightlb = new TextField();
+        txtFieldWeightlb.setPromptText("Enter Weight(lb): ");
+        AddTagsL[0] = txtFieldWeightlb;
+        txtFieldWeightlb.getStyleClass().add("TextField");
 
+        txtFieldWeightoz = new TextField();
+        txtFieldWeightoz.setPromptText("Enter Weight(oz): ");
+        AddTagsL[1] = txtFieldWeightoz;
+        txtFieldWeightoz.getStyleClass().add("TextField");
 
         txtFieldLake = new TextField();
         txtFieldLake.setPromptText("Enter Lake: ");
-        AddTagsL[1] = txtFieldLake;
+        AddTagsL[2] = txtFieldLake;
         txtFieldLake.getStyleClass().add("TextField");
 
         txtFieldSwim = new TextField();
         txtFieldSwim.setPromptText("Enter Swim: ");
-        AddTagsL[2] = txtFieldSwim;
+        AddTagsL[3] = txtFieldSwim;
         txtFieldSwim.getStyleClass().add("TextField");
-
-        txtFieldSpecies = new TextField();
-        txtFieldSpecies.setPromptText("Enter Species: ");
-        AddTagsL[3] = txtFieldSpecies;
-        txtFieldSpecies.getStyleClass().add("TextField");
 
         txtFieldBait = new TextField();
         txtFieldBait.setPromptText("Enter Bait: ");
@@ -81,7 +88,7 @@ public class AddPhotosScene {
         AddTagsR[0] = txtFieldDistance;
         txtFieldDistance.getStyleClass().add("TextField");
 
-        txtFieldTime= new TextField();
+        txtFieldTime = new TextField();
         txtFieldTime.setPromptText("Enter Time: ");
         AddTagsR[1] = txtFieldTime;
         txtFieldTime.getStyleClass().add("TextField");
@@ -104,12 +111,12 @@ public class AddPhotosScene {
         });
 
 
-        ComboBox RigComboBox = new ComboBox();
-        RigComboBox.setLayoutX(900);
-        RigComboBox.setLayoutY(200);
-        RigComboBox.setPromptText("Enter Rig: ");
-        RigComboBox.getItems().addAll("Hair Rig", "Blowback Rig", "Chod Rig", "Hinge Stiff Rig", "Supple Hinge Rig", "Combi Rig", "Zig Rig", "Floater Rig", "Other");
-        RigComboBox.getStyleClass().add("ComboBox");
+        ComboBox rigcomboBox = new ComboBox();
+        rigcomboBox.setLayoutX(900);
+        rigcomboBox.setLayoutY(200);
+        rigcomboBox.setPromptText("Enter Rig: ");
+        rigcomboBox.getItems().addAll("Hair Rig", "Blowback Rig", "Chod Rig", "Hinge Stiff Rig", "Supple Hinge Rig", "Combi Rig", "Zig Rig", "Floater Rig", "Other");
+        rigcomboBox.getStyleClass().add("ComboBox");
 
         ComboBox comboBox = new ComboBox();
         comboBox.setLayoutX(900);
@@ -117,7 +124,6 @@ public class AddPhotosScene {
         comboBox.setPromptText("Enter Species: ");
         comboBox.getItems().addAll("Mirror Carp", "Common Carp", "Leather Carp", "Koi Carp", "Ghost Carp", "Tench", "Catfish", "Sturgeon", "Bream", "Rudd", "Roach", "Pike", "Perch");
         comboBox.getStyleClass().add("ComboBox");
-
 
         Button buttonSubmit = new Button("Add Catch");
         buttonSubmit.setLayoutX(815);
@@ -167,18 +173,33 @@ public class AddPhotosScene {
         stage.setWidth(1420);
         stage.setHeight(600);
         rootPane.getStylesheets().add("Controller/simple.css");
-        rootPane.getChildren().addAll(scrollPane, AddPhotoViewLeft, AddPhotoViewRight, comboBox, RigComboBox, buttonSubmit,
+        rootPane.getChildren().addAll(scrollPane, AddPhotoViewLeft, AddPhotoViewRight, comboBox, rigcomboBox, buttonSubmit,
                 home, album, addAlbum, addPhoto, tableview, datePicker, addLake);
         rootPane.getStyleClass().add("Pane");
         stage.show();
-
     }
+
     private static void SubmitPhoto() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);
+        GetTextfieldEnteries();
         alert.setContentText("This feature is currently unavailable!!");
 
         alert.showAndWait();
+    }
+
+    private static void GetTextfieldEnteries() {
+
+        System.out.println("Weight(lb)= " + txtFieldWeightlb.getText());
+        System.out.println("Weight(oz) = " + txtFieldWeightoz.getText());
+        System.out.println("Lake = " + txtFieldLake.getText());
+        System.out.println("Swim = " + txtFieldSwim.getText());
+        System.out.println("Bait = " + txtFieldBait.getText());
+        System.out.println("Depth = " + txtFieldDepth.getText());
+        System.out.println("Distance = " + txtFieldDistance.getText());
+        System.out.println("Time = " + txtFieldTime.getText());
+        System.out.println("Weather = " + txtFieldWeather.getText());
+        //System.out.println(" " + comboBox.getValue());
     }
 
 }
