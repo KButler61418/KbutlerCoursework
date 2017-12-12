@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 
 import java.time.LocalDate;
 import java.util.Optional;
+import java.util.concurrent.Callable;
 
 import static Controller.MainController.Table;
 import static Controller.MainController.database;
@@ -29,9 +30,9 @@ public class AddPhotosScene {
     public static TextField txtFieldTime;
     public static TextField txtFieldDistance;
     public static TextField txtFieldDepth;
-    public static ComboBox comboBox;
-    public static ComboBox rigcomboBox;
-    public static ComboBox RigComboBox;
+    public static ComboBox<String> SpeciescomboBox;
+    public static ComboBox<String> rigcomboBox;
+
 
     public static void AddPhoto() {
 
@@ -118,12 +119,12 @@ public class AddPhotosScene {
         rigcomboBox.getItems().addAll("Hair Rig", "Blowback Rig", "Chod Rig", "Hinge Stiff Rig", "Supple Hinge Rig", "Combi Rig", "Zig Rig", "Floater Rig", "Other");
         rigcomboBox.getStyleClass().add("ComboBox");
 
-        ComboBox comboBox = new ComboBox();
-        comboBox.setLayoutX(900);
-        comboBox.setLayoutY(246);
-        comboBox.setPromptText("Enter Species: ");
-        comboBox.getItems().addAll("Mirror Carp", "Common Carp", "Leather Carp", "Koi Carp", "Ghost Carp", "Tench", "Catfish", "Sturgeon", "Bream", "Rudd", "Roach", "Pike", "Perch");
-        comboBox.getStyleClass().add("ComboBox");
+        ComboBox SpeciescomboBox = new ComboBox();
+        SpeciescomboBox.setLayoutX(900);
+        SpeciescomboBox.setLayoutY(246);
+        SpeciescomboBox.setPromptText("Enter Species: ");
+        SpeciescomboBox.getItems().addAll("Mirror Carp", "Common Carp", "Leather Carp", "Koi Carp", "Ghost Carp", "Tench", "Catfish", "Sturgeon", "Bream", "Rudd", "Roach", "Pike", "Perch");
+        SpeciescomboBox.getStyleClass().add("ComboBox");
 
         Button buttonSubmit = new Button("Add Catch");
         buttonSubmit.setLayoutX(815);
@@ -173,7 +174,7 @@ public class AddPhotosScene {
         stage.setWidth(1420);
         stage.setHeight(600);
         rootPane.getStylesheets().add("Controller/simple.css");
-        rootPane.getChildren().addAll(scrollPane, AddPhotoViewLeft, AddPhotoViewRight, comboBox, rigcomboBox, buttonSubmit,
+        rootPane.getChildren().addAll(scrollPane, AddPhotoViewLeft, AddPhotoViewRight, SpeciescomboBox, rigcomboBox, buttonSubmit,
                 home, album, addAlbum, addPhoto, tableview, datePicker, addLake);
         rootPane.getStyleClass().add("Pane");
         stage.show();
@@ -182,13 +183,13 @@ public class AddPhotosScene {
     private static void SubmitPhoto() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);
-        GetTextfieldEnteries();
+        GetTextfieldCatchEnteries();
         alert.setContentText("This feature is currently unavailable!!");
 
         alert.showAndWait();
     }
 
-    private static void GetTextfieldEnteries() {
+    private static void GetTextfieldCatchEnteries() {
 
         System.out.println("Weight(lb)= " + txtFieldWeightlb.getText());
         System.out.println("Weight(oz) = " + txtFieldWeightoz.getText());
@@ -199,7 +200,8 @@ public class AddPhotosScene {
         System.out.println("Distance = " + txtFieldDistance.getText());
         System.out.println("Time = " + txtFieldTime.getText());
         System.out.println("Weather = " + txtFieldWeather.getText());
-        //System.out.println(" " + comboBox.getValue());
+        System.out.println(SpeciescomboBox.getSelectionModel().getSelectedItem());
+        System.out.println(rigcomboBox.getSelectionModel().getSelectedItem());
     }
 
 }
