@@ -5,12 +5,11 @@ public class Photo {
 
     private String photoLocation;
     private int photoID;
-    private int albumID;
 
-    public Photo(String photoLocation, int photoID, int albumID) {
+    public Photo(String photoLocation, int photoID) {
         this.photoLocation = photoLocation;
         this.photoID = photoID;
-        this.albumID = albumID;
+
     }
 
     public String getPhotoLocation() {
@@ -29,12 +28,8 @@ public class Photo {
         this.photoID = photoID;
     }
 
-    public int getAlbumID() {
-        return albumID;
+    @Override
+    public String toString() {
+        return photoLocation ;
     }
-
-    public void setAlbumID(int albumID) {
-        this.albumID = albumID;
-    }
-
 }

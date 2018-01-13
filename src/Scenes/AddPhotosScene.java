@@ -2,13 +2,20 @@ package Scenes;
 
 import Model.Catch;
 import Model.CatchService;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.Optional;
 
@@ -16,6 +23,7 @@ import static Controller.MainController.Table;
 import static Controller.MainController.database;
 import static Scenes.AddAlbumsScene.AddAlbum;
 import static Scenes.AlbumScene.Album;
+import static java.lang.Integer.parseInt;
 
 
 public class AddPhotosScene {
@@ -32,6 +40,10 @@ public class AddPhotosScene {
     public static ComboBox comboBox;
     public static ComboBox rigcomboBox;
     public static ComboBox RigComboBox;
+    public static ChoiceBox cb;
+    public static String ChoiceBoxNumber;
+    public static String fileAsString;
+
 
     public static void AddPhoto() {
 
@@ -118,24 +130,43 @@ public class AddPhotosScene {
         rigcomboBox.getItems().addAll("Hair Rig", "Blowback Rig", "Chod Rig", "Hinge Stiff Rig", "Supple Hinge Rig", "Combi Rig", "Zig Rig", "Floater Rig", "Other");
         rigcomboBox.getStyleClass().add("ComboBox");
 
-        ComboBox comboBox = new ComboBox();
+
+        String[] greetings = new String[]{"1", "2", "3","4", "5", "6","7", "8", "9","10", "11", "12"};
+            cb = new ChoiceBox(FXCollections.observableArrayList("Mirror Carp", "Common Carp", "Leather Carp", "Koi Carp", "Ghost Carp", "Tench", "Catfish", "Sturgeon", "Bream", "Rudd", "Roach", "Pike", "Perch", "Other"));
+            cb.setLayoutX(900);
+            cb.setLayoutY(246);
+            cb.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+
+                public void changed(ObservableValue ov, Number Value, Number new_value) {
+
+                    System.out.println(greetings[new_value.intValue()]);
+                    ChoiceBoxNumber = greetings[new_value.intValue()];
+                }
+            });
+
+        /* ComboBox comboBox = new ComboBox();
         comboBox.setLayoutX(900);
         comboBox.setLayoutY(246);
         comboBox.setPromptText("Enter Species: ");
-        comboBox.getItems().addAll("Mirror Carp", "Common Carp", "Leather Carp", "Koi Carp", "Ghost Carp", "Tench", "Catfish", "Sturgeon", "Bream", "Rudd", "Roach", "Pike", "Perch");
+        comboBox.getItems().addAll("Mirror Carp", "Common Carp", "Leather Carp", "Koi Carp", "Ghost Carp", "Tench", "Catfish", "Sturgeon", "Bream", "Rudd", "Roach", "Pike", "Perch", "Other");
         comboBox.getStyleClass().add("ComboBox");
+       */
 
         Button buttonSubmit = new Button("Add Catch");
         buttonSubmit.setLayoutX(815);
         buttonSubmit.setLayoutY(380);
 
+        Button Addphotofile = new Button("Add Photo");
+        Addphotofile.setLayoutX(815);
+        Addphotofile.setLayoutY(420);
+
         Button home = new Button("Home");
-        home.setContentDisplay(ContentDisplay.TOP);
+        //home.setContentDisplay(ContentDisplay.TOP);
         home.setLayoutX(19);
         home.getStyleClass().add("MenuButton");
 
         Button album = new Button("Album");
-        album.setContentDisplay(ContentDisplay.TOP);
+        //album.setContentDisplay(ContentDisplay.TOP);
         album.setLayoutX(80);
         album.getStyleClass().add("MenuButton");
 
@@ -145,12 +176,12 @@ public class AddPhotosScene {
         tableview.getStyleClass().add("MenuButton");
 
         Button addPhoto = new Button("Add Photo");
-        addPhoto.setContentDisplay(ContentDisplay.TOP);
+        //addPhoto.setContentDisplay(ContentDisplay.TOP);
         addPhoto.setLayoutX(205);
         addPhoto.getStyleClass().add("MenuButton");
 
         Button addAlbum = new Button("Add Album");
-        addAlbum.setContentDisplay(ContentDisplay.TOP);
+        //addAlbum.setContentDisplay(ContentDisplay.TOP);
         addAlbum.setLayoutX(295);
         addAlbum.getStyleClass().add("MenuButton");
 
@@ -165,6 +196,7 @@ public class AddPhotosScene {
         addAlbum.setOnAction((ActionEvent ae) -> AddAlbum());
         addPhoto.setOnAction((ActionEvent ae) -> AddPhoto());
         buttonSubmit.setOnAction((ActionEvent ae) -> SubmitPhoto());
+        Addphotofile.setOnAction((ActionEvent ae) -> AddPhotofile());
 
         Stage stage = new Stage();
         stage.setTitle("Add Photo");
@@ -173,13 +205,34 @@ public class AddPhotosScene {
         stage.setWidth(1420);
         stage.setHeight(600);
         rootPane.getStylesheets().add("Controller/simple.css");
-        rootPane.getChildren().addAll(scrollPane, AddPhotoViewLeft, AddPhotoViewRight, comboBox, rigcomboBox, buttonSubmit,
-                home, album, addAlbum, addPhoto, tableview, datePicker, addLake);
+        rootPane.getChildren().addAll(scrollPane, AddPhotoViewLeft, AddPhotoViewRight, rigcomboBox, buttonSubmit,
+                home, album, addAlbum, addPhoto, tableview, datePicker, addLake, Addphotofile,cb);
         rootPane.getStyleClass().add("Pane");
         stage.show();
     }
 
     private static void SubmitPhoto() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        GetTextfieldEnteries();
+        alert.setContentText("This feature is currently unavailable!!");
+
+        alert.showAndWait();
+        createNewPizza();
+    }
+
+    private static void AddPhotofile() {
+
+        Stage stage = new Stage();
+
+        FileChooser chooser = new FileChooser();
+        File file = chooser.showOpenDialog(stage);
+        if (file != null) {
+            fileAsString = file.toString();
+            System.out.println(fileAsString);
+        }
+        //Use filepath to direct to .jar file
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);
         GetTextfieldEnteries();
@@ -199,7 +252,30 @@ public class AddPhotosScene {
         System.out.println("Distance = " + txtFieldDistance.getText());
         System.out.println("Time = " + txtFieldTime.getText());
         System.out.println("Weather = " + txtFieldWeather.getText());
-        //System.out.println(" " + comboBox.getValue());
+        System.out.println("Species = " + ChoiceBoxNumber);
+
+
     }
+
+    public static void createNewPizza() {
+
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Create new pizza");
+        dialog.setHeaderText(null);
+        dialog.setContentText("Pizza's name:");
+        Optional<String> result = dialog.showAndWait();
+
+        if (result.isPresent() && !result.get().equals("")) {
+
+            int weightLBINT = parseInt(txtFieldWeightlb.getText());
+            int weightOZINT = parseInt(txtFieldWeightoz.getText());
+
+            Catch newCatch = new Catch(8, fileAsString, ChoiceBoxNumber,  txtFieldLake.getText(), txtFieldWeather.getText(), "11", txtFieldSwim.getText(),  "Hinge Supple",  txtFieldBait.getText(), "12/12/72",weightLBINT, weightOZINT , "12:22", parseInt(txtFieldDepth.getText()), parseInt(txtFieldDistance.getText()));
+            CatchService.save(newCatch, database);
+        }
+
+    }
+
+
 
 }

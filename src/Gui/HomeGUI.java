@@ -39,7 +39,7 @@ public class HomeGUI extends Application {
                 scrollPane.setFitToWidth(true);
                 scrollPane.setLayoutY(30);
                 scrollPane.setVmax(440);
-                scrollPane.setPrefSize(1360, 700);
+                scrollPane.setPrefSize(1450, 700);
                 scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
 
                 GridPane root = new GridPane();

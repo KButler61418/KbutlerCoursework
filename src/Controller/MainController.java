@@ -6,6 +6,7 @@ import Scenes.CatchScene;
 import Views.LakebedView;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -150,9 +151,11 @@ public class MainController extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
+        CatchService.selectPhotoUrl(1,  database);
+
         try {
             //create the images
-            Image Peck = new Image("Gui/20170911_232450.jpg", 400, 300, false, true);  //filename, requestedWidth, requestedHeight, preserveRatio, smooth
+            Image Peck = new Image("Gui/20170912_132539.jpg",400, 300, false, true);  //filename, requestedWidth, requestedHeight, preserveRatio, smooth
             Image Ali = new Image("Gui/20170912_132539.jpg", 400, 300, false, true);
             Image Dove = new Image("Gui/20170912_134249.jpg", 400, 300, false, true);
             Image Fish4 = new Image("Gui/20170414_102301 (2).jpg", 400, 300, false, true);
@@ -324,6 +327,7 @@ public class MainController extends Application {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
+       System.out.println(CatchService.selectPhotoUrl(1,  database));
     }
 
    /* public void createNewPizza() {
@@ -374,20 +378,11 @@ public class MainController extends Application {
 
         database = new DatabaseConnection("src/CourseworkDatabase.db");
 
-        ArrayList<Catch> allToppings = new ArrayList<>();
-
-        allToppings.clear();
-        CatchService.selectAll(allToppings, database);
-        CatchList.setItems(FXCollections.observableArrayList(allToppings));
-
-
-        table.setItems(FXCollections.observableArrayList(allToppings));
-        CatchService.selectAll(allToppings, database);
-
-        System.out.println(CatchService.selectByID(1,  database));
-        System.out.println(CatchService.selectByID(2, database));
-        System.out.println(CatchService.selectByID(3, database));
-        System.out.println(CatchService.selectByID(4, database));
+        ArrayList<Catch> Catches = new ArrayList<>();
+        Catches.clear();
+        CatchService.selectAll(Catches, database);
+        CatchList.setItems(FXCollections.observableArrayList(Catches));
+        table.setItems(FXCollections.observableArrayList(Catches));
 
 
        launch(args);

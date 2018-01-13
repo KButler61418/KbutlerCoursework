@@ -3,7 +3,7 @@ package Model;
 public class Catch {
 
     public int catchID;
-    public int photoID;
+    public String photoID;
     public String speciesType;
     public String lakeName;
     public String weatherType;
@@ -15,11 +15,11 @@ public class Catch {
     public int weightLB;
     public int weightOZ;
     public String Time;
-    public float depth;
-    public float distance;
+    public int depth;
+    public int distance;
 
 
-    public Catch(int catchID, int photoID, String speciesType, String lakeName, String weatherType, String lakebedType, String swim, String rig, String bait, String date, int weightLB, int weightOZ, String time, float depth, float distance) {
+    public Catch(int catchID, String photoID, String speciesType, String lakeName, String weatherType, String lakebedType, String swim, String rig, String bait, String date, int weightLB, int weightOZ, String time, int depth, int distance) {
         this.catchID = catchID;
         this.photoID = photoID;
         this.speciesType = speciesType;
@@ -45,11 +45,11 @@ public class Catch {
         this.catchID = catchID;
     }
 
-    public int getPhotoID() {
+    public String getPhotoID() {
         return photoID;
     }
 
-    public void setPhotoID(int photoID) {
+    public void setPhotoID(String photoID) {
         this.photoID = photoID;
     }
 
@@ -139,19 +139,19 @@ public class Catch {
         Time = time;
     }
 
-    public float getDepth() {
+    public int getDepth() {
         return depth;
     }
 
-    public void setDepth(float depth) {
+    public void setDepth(int depth) {
         this.depth = depth;
     }
 
-    public float getDistance() {
+    public int getDistance() {
         return distance;
     }
 
-    public void setDistance(float distance) {
+    public void setDistance(int distance) {
         this.distance = distance;
     }
 
