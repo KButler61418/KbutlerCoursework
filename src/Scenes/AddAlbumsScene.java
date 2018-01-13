@@ -20,7 +20,7 @@ import static Scenes.AlbumScene.Album;
 
 public class AddAlbumsScene {
 
-    public static TextField txtFieldDistance;
+    public static TextField txtFieldAlbumName;
     public static TextField txtFieldDate;
     public static TextField txtFieldPhoto1;
     public static TextField txtFieldPhoto2;
@@ -44,9 +44,9 @@ public class AddAlbumsScene {
 
         TextField[] AddAlbumInfo = new TextField[7];
 
-        txtFieldDistance = new TextField();
-        txtFieldDistance.setPromptText("Album Name: ");
-        AddAlbumInfo[0] = txtFieldDistance;
+        txtFieldAlbumName = new TextField();
+        txtFieldAlbumName.setPromptText("Album Name: ");
+        AddAlbumInfo[0] = txtFieldAlbumName;
 
         txtFieldDate = new TextField();
         txtFieldDate.setPromptText("Enter Date: ");
@@ -136,8 +136,21 @@ public class AddAlbumsScene {
     private static void SubmitAlbum() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);
+        GetTextfieldAlbumEnteries();
         alert.setContentText("This feature is currently unavailable!!");
 
         alert.showAndWait();
+    }
+
+    private static void GetTextfieldAlbumEnteries() {
+
+        System.out.println("Album Name= " + txtFieldAlbumName.getText());
+        System.out.println("Date = " + txtFieldDate.getText());
+        System.out.println("Photo 1 = " + txtFieldPhoto1.getText());
+        System.out.println("Photo 2= " + txtFieldPhoto2.getText());
+        System.out.println("Photo 3= " + txtFieldPhoto3.getText());
+        System.out.println("Photo 4= " + txtFieldPhoto4.getText());
+        System.out.println("Photo 5= " + txtFieldPhoto5.getText());
+
     }
 }

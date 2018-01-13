@@ -118,13 +118,25 @@ public class AddLakesScene {
         rootPane.getStyleClass().add("Pane");
         stage.show();
     }
+
     private static void SubmitLake() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);
+        GetTextfieldLakeEnteries();
         alert.setContentText("This feature is currently unavailable!!");
 
         alert.showAndWait();
     }
+
+    private static void GetTextfieldLakeEnteries() {
+
+        System.out.println("Postcode= " + txtFieldPostcode.getText());
+        System.out.println("Lake Name = " + txtFieldLakeName.getText());
+        System.out.println("Street = " + txtFieldStreet.getText());
+        System.out.println("Town = " + txtFieldTown.getText());
+        System.out.println("County = " + txtFieldCounty.getText());
+
+}
 
     /*public void createNewLake() {
 

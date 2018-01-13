@@ -67,6 +67,11 @@ public class CatchScene {
 
         System.out.println(selectByID(1,  database));
 
+
+        String Text = (selectByID(1,  database).toString());
+        System.out.println(Text);
+        
+
         Tags[0] = new Label(" Weight: " + selectByID(1,database));
         Tags[1] = new Label(" Lake: Yateley South Lake");
         Tags[2] = new Label(" Swim: Car Park 1");
