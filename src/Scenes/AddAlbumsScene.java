@@ -1,14 +1,18 @@
 package Scenes;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import javax.swing.*;
 
+import java.io.File;
+import java.util.List;
 import java.util.Optional;
 
 import static Controller.MainController.Table;
@@ -22,13 +26,21 @@ public class AddAlbumsScene {
 
     public static TextField txtFieldAlbumName;
     public static TextField txtFieldDate;
-    public static TextField txtFieldPhoto1;
-    public static TextField txtFieldPhoto2;
-    public static TextField txtFieldPhoto3;
-    public static TextField txtFieldPhoto4;
-    public static TextField txtFieldPhoto5;
+    public static Label Photo1;
+    public static Label Photo2;
+    public static Label Photo3;
+    public static Label Photo4;
+    public static Label Photo5;
+    public static Button Photo1button;
+    public static Button Photo2button;
+    public static Button Photo3button;
+    public static Button Photo4button;
+    public static Button Photo5button;
+    public static String fileAsString;
 
     public static void AddAlbum() {
+
+        Stage stage = new Stage();
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setFitToWidth(true);
         scrollPane.setVmax(700);
@@ -41,8 +53,7 @@ public class AddAlbumsScene {
         AddAlbumView.setLayoutX(650);
         AddAlbumView.setLayoutY(20);
 
-
-        TextField[] AddAlbumInfo = new TextField[7];
+        TextField[] AddAlbumInfo = new TextField[2];
 
         txtFieldAlbumName = new TextField();
         txtFieldAlbumName.setPromptText("Album Name: ");
@@ -52,32 +63,58 @@ public class AddAlbumsScene {
         txtFieldDate.setPromptText("Enter Date: ");
         AddAlbumInfo[1] = txtFieldDate;
 
-        txtFieldPhoto1 = new TextField();
-        txtFieldPhoto1.setPromptText("Photo 1: ");
-        AddAlbumInfo[2] = txtFieldPhoto1;
-        txtFieldPhoto1.getStyleClass().add("TextField");
+        Photo1 = new Label();
+        Photo1.setText("Photo 1: ");
 
-        txtFieldPhoto2 = new TextField();
-        txtFieldPhoto2.setPromptText("Photo 2: ");
-        AddAlbumInfo[3] = txtFieldPhoto2;
-        txtFieldPhoto2.getStyleClass().add("TextField");
 
-        txtFieldPhoto3 = new TextField();
-        txtFieldPhoto3.setPromptText("Photo 3: ");
-        AddAlbumInfo[4] = txtFieldPhoto3;
-        txtFieldPhoto3.getStyleClass().add("TextField");
+        Photo1button = new Button();
+        Photo1button.setText("Add Photo 1");
 
-        txtFieldPhoto4 = new TextField();
-        txtFieldPhoto4.setPromptText("Photo 4: ");
-        AddAlbumInfo[5] = txtFieldPhoto4;
-        txtFieldPhoto4.getStyleClass().add("TextField");
+        Photo1button.getStyleClass().add("TextField");
 
-        txtFieldPhoto5 = new TextField();
-        txtFieldPhoto5.setPromptText("Photo 5: ");
-        AddAlbumInfo[6] = txtFieldPhoto5;
-        txtFieldPhoto5.getStyleClass().add("TextField");
+
+        Photo2 = new Label();
+        Photo2.setText("Photo 2: ");
+
+
+        Photo2button = new Button();
+        Photo2button.setText("Add Photo 2");
+
+
+        Photo2.getStyleClass().add("TextField");
+
+        Photo3 = new Label();
+        Photo3.setText("Photo 3: ");
+
+        Photo3button = new Button();
+        Photo3button.setText("Add Photo 3");
+
+
+        Photo3.getStyleClass().add("TextField");
+
+        Photo4 = new Label();
+        Photo4.setText("Photo 4: ");
+
+
+        Photo4button = new Button();
+        Photo4button.setText("Add Photo 4");
+
+
+        Photo4.getStyleClass().add("TextField");
+
+        Photo5 = new Label();
+        Photo5.setText("Photo 5: ");
+
+
+        Photo5button = new Button();
+        Photo5button.setText("Add Photo 5");
+       
+
+        Photo5.getStyleClass().add("TextField");
+
 
         AddAlbumView.getChildren().addAll(AddAlbumInfo);
+
 
         Button buttonSubmit = new Button("Add Album");
         buttonSubmit.setLayoutX(815);
@@ -121,17 +158,34 @@ public class AddAlbumsScene {
         addLake.setOnAction((ActionEvent ae) -> AddLake());
         buttonSubmit.setOnAction((ActionEvent ae) -> SubmitAlbum());
 
-        Stage stage = new Stage();
+        final FileChooser fileChooser = new FileChooser();
+        final Button openMultipleButton = new Button("Add Pictures");
+        openMultipleButton.setLayoutX(815);
+        openMultipleButton.setLayoutY(350);
+        openMultipleButton.setOnAction(
+                new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(final ActionEvent e) {
+                        List<File> list =
+                                fileChooser.showOpenMultipleDialog(stage);
+                        fileAsString = list.toString();
+                        System.out.println(fileAsString);
+
+                    }
+                });
+
+
         stage.setTitle("Add Album");
         Pane rootPane = new Pane();
         stage.setScene(new Scene(rootPane));
         stage.setWidth(1420);
         stage.setHeight(600);
         rootPane.getStylesheets().add("Controller/simple.css");
-        rootPane.getChildren().addAll(scrollPane, AddAlbumView, buttonSubmit, home, album, addLake, addAlbum, addPhoto, tableview);
+        rootPane.getChildren().addAll(scrollPane, AddAlbumView, AddAlbumView3, buttonSubmit, home, album, addLake, addAlbum, addPhoto, tableview, openMultipleButton);
         rootPane.getStyleClass().add("Pane");
         stage.show();
     }
+
 
     private static void SubmitAlbum() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -146,11 +200,7 @@ public class AddAlbumsScene {
 
         System.out.println("Album Name= " + txtFieldAlbumName.getText());
         System.out.println("Date = " + txtFieldDate.getText());
-        System.out.println("Photo 1 = " + txtFieldPhoto1.getText());
-        System.out.println("Photo 2= " + txtFieldPhoto2.getText());
-        System.out.println("Photo 3= " + txtFieldPhoto3.getText());
-        System.out.println("Photo 4= " + txtFieldPhoto4.getText());
-        System.out.println("Photo 5= " + txtFieldPhoto5.getText());
+
 
     }
 }

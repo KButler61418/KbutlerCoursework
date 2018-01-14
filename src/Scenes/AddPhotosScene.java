@@ -226,6 +226,10 @@ public class AddPhotosScene {
         Stage stage = new Stage();
 
         FileChooser chooser = new FileChooser();
+        chooser.setTitle("View Pictures");
+        chooser.setInitialDirectory(
+                new File(System.getProperty("user.home"))
+        );
         File file = chooser.showOpenDialog(stage);
         if (file != null) {
             fileAsString = file.toString();
