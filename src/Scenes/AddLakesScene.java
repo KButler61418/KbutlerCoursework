@@ -1,5 +1,9 @@
 package Scenes;
 
+import Model.Album;
+import Model.AlbumService;
+import Model.Location;
+import Model.LocationService;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -126,6 +130,7 @@ public class AddLakesScene {
         alert.setContentText("This feature is currently unavailable!!");
 
         alert.showAndWait();
+        createNewPizza();
     }
 
     private static void GetTextfieldLakeEnteries() {
@@ -136,9 +141,7 @@ public class AddLakesScene {
         System.out.println("Town = " + txtFieldTown.getText());
         System.out.println("County = " + txtFieldCounty.getText());
 
-}
-
-    /*public void createNewLake() {
+} public static void createNewPizza() {
 
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Create new pizza");
@@ -146,19 +149,17 @@ public class AddLakesScene {
         dialog.setContentText("Pizza's name:");
         Optional<String> result = dialog.showAndWait();
 
-        if (result.isPresent() && !result.get().equals("")){
-            Lake newLake = new Lake(0, result.get());
-            LakeService.save(newLake, database);
+        if (result.isPresent() && !result.get().equals("")) {
 
-            ToppingView selectedTopping = toppingTable.getSelectionModel().getSelectedItem();
-            updateLists(database.lastNewId(), selectedTopping != null ? selectedTopping.getId() : 0);
+            Location newLocation = new Location(1, txtFieldLakeName.getText(), txtFieldStreet.getText(), txtFieldTown.getText(), txtFieldCounty.getText(), txtFieldPostcode.getText());
+            LocationService.saveLocation(newLocation, database);
+
         }
-        else {
-            displayError("No name provided.");
-        }
+
 
     }
-    */
+
+
 
 
 }

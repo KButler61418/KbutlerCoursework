@@ -1,12 +1,33 @@
-/*
 package Model;
+import Model.*;
 
-class LocationService {
+import java.sql.ResultSetMetaData;
+import java.util.ArrayList;
+import Model.DatabaseConnection;
+import javafx.scene.control.Label;
 
-    public static void selectAll(List<Item> destination, DatabaseConnection database) { }
-    public static Catch selectById(int catchID, DatabaseConnection database) { }
-    public static void save(Catch catchID, DatabaseConnection database) { }	// insert & update
-    public static void deleteById(int catchID, DatabaseConnection database) { }
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.List;
 
+import static Controller.MainController.database;
+
+public class LocationService {
+
+    public static void saveLocation(Location itemToSave, DatabaseConnection database) {
+
+        try {
+            PreparedStatement statement = database.newStatement("INSERT INTO Location(street, town, county, postcode) VALUES (?, ?, ? , ?)");
+
+            statement.setString(1, itemToSave.getStreet());
+            statement.setString(2, itemToSave.getTown());
+            statement.setString(3, itemToSave.getCounty());
+            statement.setString(4, itemToSave.getPostcode());
+
+            database.executeUpdate(statement);
+
+        } catch (SQLException resultsException) {
+            System.out.println("Database saving error: " + resultsException.getMessage());
+        }
+    }
 }
-*/

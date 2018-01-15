@@ -66,7 +66,7 @@ public class AddPhotosScene {
         AddPhotoViewRight.setLayoutY(20);
 
         TextField[] AddTagsL = new TextField[6];
-        TextField[] AddTagsR = new TextField[3];
+        TextField[] AddTagsR = new TextField[2];
 
         txtFieldWeightlb = new TextField();
         txtFieldWeightlb.setPromptText("Enter Weight(lb): ");
@@ -272,7 +272,7 @@ public class AddPhotosScene {
         System.out.println("Depth = " + txtFieldDepth.getText());
         System.out.println("Distance = " + txtFieldDistance.getText());
         System.out.println("Time = " + txtFieldTime.getText());
-        System.out.println("Weather = " + txtFieldWeather.getText());
+        System.out.println("Weather = " + weatherNumber);
         System.out.println("Species = " + ChoiceBoxNumber);
         System.out.println("Rig = " + rigBoxNumber);
 
@@ -292,7 +292,7 @@ public class AddPhotosScene {
             int weightLBINT = parseInt(txtFieldWeightlb.getText());
             int weightOZINT = parseInt(txtFieldWeightoz.getText());
 
-            Catch newCatch = new Catch(8, "11", ChoiceBoxNumber,  txtFieldLake.getText(), txtFieldWeather.getText(), lakebedBoxNumber, txtFieldSwim.getText(),  rigBoxNumber,  txtFieldBait.getText(), "12/12/72", parseInt(txtFieldWeightlb.getText()), weightOZINT , "12:22", parseInt(txtFieldDepth.getText()), parseInt(txtFieldDistance.getText()));
+            Catch newCatch = new Catch(8, "11", ChoiceBoxNumber,  txtFieldLake.getText(), weatherNumber, lakebedBoxNumber, txtFieldSwim.getText(),  rigBoxNumber,  txtFieldBait.getText(), "12/12/72", parseInt(txtFieldWeightlb.getText()), weightOZINT , "12:22", parseInt(txtFieldDepth.getText()), parseInt(txtFieldDistance.getText()));
             CatchService.save(newCatch, database);
         }
 

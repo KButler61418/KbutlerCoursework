@@ -330,47 +330,6 @@ public class MainController extends Application {
        System.out.println(CatchService.selectPhotoUrl(1,  database));
     }
 
-   /* public void createNewPizza() {
-
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Create new pizza");
-        dialog.setHeaderText(null);
-        dialog.setContentText("Pizza's name:");
-        Optional<String> result = dialog.showAndWait();
-
-        if (result.isPresent() && !result.get().equals("")){
-            Catch newPizza = new Catch(0, result.get());
-            CatchService.save(newPizza, database);
-
-        }
-        else {
-            displayError("No name provided.");
-        }
-
-    }
-    */
-
-    /* public static void updateLists() {
-
-        ArrayList<Lakebed> allToppings = new ArrayList<>();
-
-        allToppings.clear();
-        LakebedService.selectAll(allToppings, database);
-
-        ArrayList<LakebedView> toppingViews = new ArrayList<>();
-        for (Lakebed t: allToppings) {
-            toppingViews.add(new LakebedView(
-                    t.getLakebedID(),LakebedService.selectLakebedById(t.getLakebedID(), database).getLakebedType()));
-                    System.out.println(allToppings);}
-
-        table.setItems(FXCollections.observableList(toppingViews));
-
-
-        //pizzaList.getItems().clear();
-        //PizzaService.selectAll(pizzaList.getItems(), database);
-    }
-*/
-
     private ListView<Catch> CatchPhotoList;
 
 

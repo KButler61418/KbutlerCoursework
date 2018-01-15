@@ -79,6 +79,44 @@ public class CatchService {
 
     }
 
+    public static Catch selectByID2(int CatchID, DatabaseConnection database) {
+
+        Catch result = null;
+        Label[] Tags = new Label[11];
+
+        PreparedStatement statement = database.newStatement("SELECT catchID,photoID,speciesID,lakeID,weatherType,lakebedType,swim,rig,bait,date,weightLB,weightOZ,time,depth,distance FROM catch WHERE CatchID = ?");
+        PreparedStatement statement2 = database.newStatement("SELECT Species.speciesType, Catch.weightLB, Catch.date FROM Species INNER JOIN Catch ON Catch.speciesID = Species.speciesID");
+        PreparedStatement statement3 = database.newStatement("SELECT Lake.lakeName, Catch.weightLB FROM Lake INNER JOIN Catch ON Catch.lakeID =  Lake.lakeID;");
+        PreparedStatement statement4 = database.newStatement("SELECT Swim.swimName, Catch.weightLB FROM Swim INNER JOIN Catch ON Swim.swimID = Catch.swim;");
+        PreparedStatement statement5 = database.newStatement("SELECT Weather.weatherType, Catch.weatherType FROM Weather INNER JOIN Catch ON Weather.weatherID = Catch.weatherType");
+        PreparedStatement statement6 = database.newStatement("SELECT Lakebed.LakebedType FROM Lakebed INNER JOIN Catch ON Lakebed.lakebedID = Catch.lakebedType");
+        PreparedStatement statement7 = database.newStatement("SELECT Rig.rigType FROM Rig INNER JOIN Catch ON Rig.rigID = Catch.rig");
+        try {
+            if (statement != null) {
+
+
+                statement.setInt(1, CatchID);
+
+                ResultSet results = database.executeQuery(statement);
+                ResultSet results2 = database.executeQuery(statement2);
+                ResultSet results3 = database.executeQuery(statement3);
+                ResultSet results4 = database.executeQuery(statement4);
+                ResultSet results5 = database.executeQuery(statement5);
+                ResultSet results6 = database.executeQuery(statement6);
+                ResultSet results7 = database.executeQuery(statement7);
+
+                if (results != null) {
+                    result = new Catch(results.getInt("catchID"), results.getString("photoID"), results2.getString("speciesType"), results3.getString("lakeName"), results5.getString("weatherType"), results6.getString("lakebedType"), results4.getString("swimName"), results7.getString("rigType"), results.getString("bait"), results.getString("date"), results.getInt("weightLB"), results.getInt("weightOZ"), results.getString("time"), results.getInt("depth"), results.getInt("distance"));
+
+                }
+            }
+        } catch (SQLException resultsException) {
+            System.out.println("Database select by id error: " + resultsException.getMessage());
+        }
+
+        return result;
+    }
+
     public static Catch selectByID(int CatchID, DatabaseConnection database) {
 
         Catch result = null;
@@ -105,6 +143,7 @@ public class CatchService {
 
         return result;
     }
+
 
 
     public static void save(Catch itemToSave, DatabaseConnection database) {

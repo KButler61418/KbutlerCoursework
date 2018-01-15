@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import static Controller.MainController.Table;
 import static Controller.MainController.database;
 import static Model.CatchService.selectByID;
+import static Model.CatchService.selectByID2;
 import static Scenes.AddAlbumsScene.AddAlbum;
 import static Scenes.AddLakesScene.AddLake;
 import static Scenes.AlbumScene.Album;
@@ -61,28 +62,30 @@ public class CatchScene {
         boxOfButtons.setLayoutX(700);
         boxOfButtons.setLayoutY(20);
 
-        Label[] Tags = new Label[11];
+        Label[] Tags = new Label[12];
 
         System.out.println("Photo!!");
 
-        System.out.println(selectByID(1,  database));
+        System.out.println(selectByID2(1,  database));
 
 
-        String Text = (selectByID(1,  database).toString());
+        String Text = (selectByID2(1,  database).toString());
         System.out.println(Text);
+        String[] parts = Text.split(",");
         
 
-        Tags[0] = new Label(" Weight: " + selectByID(1,database));
-        Tags[1] = new Label(" Lake: Yateley South Lake");
-        Tags[2] = new Label(" Swim: Car Park 1");
-        Tags[3] = new Label(" Species: Mirror Carp");
-        Tags[4] = new Label(" Rig: Chod Rig");
-        Tags[5] = new Label(" Bait: 12mm Squid Supreme");
-        Tags[6] = new Label(" Date: 21/09/17");
-        Tags[7] = new Label(" Time: 12:09");
-        Tags[8] = new Label(" Lake bed: Gravel");
-        Tags[9] = new Label(" Depth: 6 ft ");
-        Tags[10] = new Label(" Weather: Rainy");
+        Tags[0] = new Label(" Weight: " + parts[8] + "lb" + parts[9] + "oz");
+        Tags[1] = new Label(" Lake: " + parts[2] );
+        Tags[2] = new Label(" Swim: Car Park 1 " + parts[5]);
+        Tags[3] = new Label(" Species: Mirror Carp "+ parts[1]);
+        Tags[4] = new Label(" Rig: Chod Rig "+ parts[6]);
+        Tags[5] = new Label(" Bait: 12mm Squid Supreme "+ parts[7]);
+        Tags[6] = new Label(" Date: 21/09/17 "+ parts[13]);
+        Tags[7] = new Label(" Time: 12:09 "+ parts[10]);
+        Tags[11] = new Label("Weather: "+ parts[3]);
+        Tags[8] = new Label(" Lake bed: Gravel "+ parts[4]);
+        Tags[9] = new Label(" Depth: 6 ft "+ parts[11]);
+        Tags[10] = new Label("" + parts[12]);
 
         boxOfButtons.getChildren().addAll(Tags);
 

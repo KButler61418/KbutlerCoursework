@@ -15,19 +15,15 @@ public class Photo {
     public String getPhotoLocation() {
         return photoLocation;
     }
-
     public void setPhotoLocation(String photoLocation) {
         this.photoLocation = photoLocation;
     }
-
     public int getPhotoID() {
         return photoID;
     }
-
     public void setPhotoID(int photoID) {
         this.photoID = photoID;
     }
-
     @Override
     public String toString() {
         return photoLocation ;

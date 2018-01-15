@@ -13,7 +13,7 @@ import java.util.List;
 public class AlbumService {
 
 
-    public static void selectAll(List<Album> targetList, DatabaseConnection database) {
+    /*public static void selectAll(List<Album> targetList, DatabaseConnection database) {
 
         PreparedStatement statement = database.newStatement("SELECT albumID, albumName FROM Album ORDER BY albumID");
 
@@ -32,7 +32,27 @@ public class AlbumService {
             System.out.println("Database select all error: " + resultsException.getMessage());
         }
     }
+    */
 
+    public static void saveAlbum(Album itemToSave, DatabaseConnection database) {
+
+        try {
+            PreparedStatement statement = database.newStatement("INSERT INTO Album(albumName, photo1ID, photo2ID, photo3ID, photo4ID, photo5ID ) VALUES (?, ?, ? , ? ,?, ?)");
+
+            statement.setString(1, itemToSave.getalbumName());
+            statement.setInt(2, itemToSave.getPhoto1ID());
+            statement.setInt(3, itemToSave.getPhoto2ID());
+            statement.setInt(4, itemToSave.getPhoto3ID());
+            statement.setInt(5, itemToSave.getPhoto4ID());
+            statement.setInt(6, itemToSave.getPhoto5ID());
+
+
+            database.executeUpdate(statement);
+
+        } catch (SQLException resultsException) {
+            System.out.println("Database saving error: " + resultsException.getMessage());
+        }
+    }
 }
 
 

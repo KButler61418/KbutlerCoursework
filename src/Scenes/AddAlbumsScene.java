@@ -1,5 +1,9 @@
 package Scenes;
 
+import Model.Album;
+import Model.AlbumService;
+import Model.Catch;
+import Model.CatchService;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -16,10 +20,11 @@ import java.util.List;
 import java.util.Optional;
 
 import static Controller.MainController.Table;
+import static Controller.MainController.database;
 import static Scenes.AddLakesScene.AddLake;
 import static Scenes.AddPhotosScene.AddPhoto;
 import static Scenes.AlbumScene.Album;
-
+import static java.lang.Integer.parseInt;
 
 
 public class AddAlbumsScene {
@@ -58,27 +63,20 @@ public class AddAlbumsScene {
         AddAlbumView.setLayoutX(650);
         AddAlbumView.setLayoutY(20);
 
-        TextField[] AddAlbumInfo = new TextField[2];
+        TextField[] AddAlbumInfo = new TextField[1];
 
         txtFieldAlbumName = new TextField();
         txtFieldAlbumName.setPromptText("Album Name: ");
         AddAlbumInfo[0] = txtFieldAlbumName;
 
-        txtFieldDate = new TextField();
-        txtFieldDate.setPromptText("Enter Date: ");
-        AddAlbumInfo[1] = txtFieldDate;
-
         Photo1 = new Label();
         Photo1.setText(Photo1URL);
         Photo1.setLayoutX(750);
         Photo1.setLayoutY(100);
-
-
         Photo1button = new Button();
         Photo1button.setText("Add Photo 1");
         Photo1button.setLayoutX(650);
         Photo1button.setLayoutY(100);
-
         Photo1button.getStyleClass().add("TextField");
 
 
@@ -86,53 +84,40 @@ public class AddAlbumsScene {
         Photo2.setText(Photo2URL);
         Photo2.setLayoutX(750);
         Photo2.setLayoutY(140);
-
-
         Photo2button = new Button();
         Photo2button.setText("Add Photo 2");
         Photo2button.setLayoutX(650);
         Photo2button.setLayoutY(140);
-
-
         Photo2.getStyleClass().add("TextField");
 
         Photo3 = new Label();
         Photo3.setText(Photo3URL);
         Photo3.setLayoutX(750);
         Photo3.setLayoutY(180);
-
         Photo3button = new Button();
         Photo3button.setText("Add Photo 3");
         Photo3button.setLayoutX(650);
         Photo3button.setLayoutY(180);
-
         Photo3.getStyleClass().add("TextField");
 
         Photo4 = new Label();
         Photo4.setText(Photo4URL);
         Photo4.setLayoutX(750);
         Photo4.setLayoutY(220);
-
-
         Photo4button = new Button();
         Photo4button.setText("Add Photo 4");
         Photo4button.setLayoutX(650);
         Photo4button.setLayoutY(220);
-
-
         Photo4.getStyleClass().add("TextField");
 
         Photo5 = new Label();
         Photo5.setText(Photo5URL);
         Photo5.setLayoutX(750);
         Photo5.setLayoutY(260);
-
-
         Photo5button = new Button();
         Photo5button.setText("Add Photo 5");
         Photo5button.setLayoutX(650);
         Photo5button.setLayoutY(260);
-
         Photo5.getStyleClass().add("TextField");
 
 
@@ -212,8 +197,25 @@ public class AddAlbumsScene {
         rootPane.getChildren().addAll(scrollPane, AddAlbumView, Photo1button, Photo2button, Photo3button, Photo4button, Photo5button,Photo1, Photo2,Photo3,Photo4,Photo5,buttonSubmit, home, album, addLake, addAlbum, addPhoto, tableview, openMultipleButton);
         rootPane.getStyleClass().add("Pane");
         stage.show();
+        createNewPizza();
     }
 
+    public static void createNewPizza() {
+
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Create new pizza");
+        dialog.setHeaderText(null);
+        dialog.setContentText("Pizza's name:");
+        Optional<String> result = dialog.showAndWait();
+
+        if (result.isPresent() && !result.get().equals("")) {
+
+            Album newAlbum = new Album(1, txtFieldAlbumName.getText(), 1, 2, 3,4,5 );
+            AlbumService.saveAlbum(newAlbum, database);
+
+        }
+
+    }
 
     private static void Photo1Chooser(){
         Stage stage = new Stage();

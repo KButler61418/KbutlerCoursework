@@ -158,7 +158,7 @@ public class Catch {
     @Override
     public String toString() {
         return  "catchID=" + catchID + " " + photoID + ", speciesType='" + speciesType + '\'' + ", lakeName='" + lakeName + '\'' + ", weatherType='" + weatherType + '\'' + ", lakebedType='" + lakebedType + '\'' + ", swim='" + swim + '\'' + ", rig='" + rig + '\'' + ", bait='" + bait + '\'' + ", weightLB=" + weightLB +
-                ", weightOZ=" + weightOZ + ", Time='" + Time + '\'' + ", depth=" + depth + ", distance=" + distance + '}';
+                ", weightOZ=" + weightOZ + ", Time='" + Time + '\'' + ", depth=" + depth + ", distance=" + distance + ", date =" + date + '}';
     }
 
 }
