@@ -74,17 +74,17 @@ public class CatchScene {
         String[] parts = Text.split(",");
         
 
-        Tags[0] = new Label(" Weight: " + parts[8] + "lb" + parts[9] + "oz");
-        Tags[1] = new Label(" Lake: " + parts[2] );
-        Tags[2] = new Label(" Swim: Car Park 1 " + parts[5]);
-        Tags[3] = new Label(" Species: Mirror Carp "+ parts[1]);
-        Tags[4] = new Label(" Rig: Chod Rig "+ parts[6]);
-        Tags[5] = new Label(" Bait: 12mm Squid Supreme "+ parts[7]);
-        Tags[6] = new Label(" Date: 21/09/17 "+ parts[13]);
-        Tags[7] = new Label(" Time: 12:09 "+ parts[10]);
-        Tags[11] = new Label("Weather: "+ parts[3]);
-        Tags[8] = new Label(" Lake bed: Gravel "+ parts[4]);
-        Tags[9] = new Label(" Depth: 6 ft "+ parts[11]);
+        Tags[0] = new Label( "" + parts[8] + parts[9]);
+        Tags[1] = new Label(""+ parts[2] );
+        Tags[2] = new Label("" + parts[5]);
+        Tags[3] = new Label(""+ parts[1]);
+        Tags[4] = new Label(""+ parts[6]);
+        Tags[5] = new Label(""+ parts[7]);
+        Tags[6] = new Label(""+ parts[13]);
+        Tags[7] = new Label(""+ parts[10]);
+        Tags[11] = new Label(""+ parts[3]);
+        Tags[8] = new Label(""+ parts[4]);
+        Tags[9] = new Label(""+ parts[11]);
         Tags[10] = new Label("" + parts[12]);
 
         boxOfButtons.getChildren().addAll(Tags);

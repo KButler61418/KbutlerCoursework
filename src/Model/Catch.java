@@ -127,6 +127,7 @@ public class Catch {
         return weightOZ;
     }
 
+
     public void setWeightOZ(int weightOZ) {
         this.weightOZ = weightOZ;
     }
@@ -134,7 +135,6 @@ public class Catch {
     public String getTime() {
         return Time;
     }
-
     public void setTime(String time) {
         Time = time;
     }
@@ -157,8 +157,7 @@ public class Catch {
 
     @Override
     public String toString() {
-        return  "catchID=" + catchID + " " + photoID + ", speciesType='" + speciesType + '\'' + ", lakeName='" + lakeName + '\'' + ", weatherType='" + weatherType + '\'' + ", lakebedType='" + lakebedType + '\'' + ", swim='" + swim + '\'' + ", rig='" + rig + '\'' + ", bait='" + bait + '\'' + ", weightLB=" + weightLB +
-                ", weightOZ=" + weightOZ + ", Time='" + Time + '\'' + ", depth=" + depth + ", distance=" + distance + ", date =" + date + '}';
+        return  "CatchID=" + catchID + " " + photoID + ",Species: " + speciesType+ ",Lake: " + lakeName +  ",Weather: " + weatherType + ",Lakebed: " + lakebedType +  ",Swim: " + swim + ",Rig: " + rig  + ",Bait: " + bait + ",Weight: " + weightLB + "(lb) "
+                + "," + weightOZ + "(oz)"+ ",Time: " + Time  + ",Depth: " + depth + ",Distance: " + distance + ",Date: " + date;
     }
-
 }
