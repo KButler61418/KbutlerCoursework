@@ -37,6 +37,11 @@ public class AddAlbumsScene {
     public static Button Photo4button;
     public static Button Photo5button;
     public static String fileAsString;
+    public static String Photo1URL;
+    public static String Photo2URL;
+    public static String Photo3URL;
+    public static String Photo4URL;
+    public static String Photo5URL;
 
     public static void AddAlbum() {
 
@@ -64,51 +69,69 @@ public class AddAlbumsScene {
         AddAlbumInfo[1] = txtFieldDate;
 
         Photo1 = new Label();
-        Photo1.setText("Photo 1: ");
+        Photo1.setText(Photo1URL);
+        Photo1.setLayoutX(750);
+        Photo1.setLayoutY(100);
 
 
         Photo1button = new Button();
         Photo1button.setText("Add Photo 1");
+        Photo1button.setLayoutX(650);
+        Photo1button.setLayoutY(100);
 
         Photo1button.getStyleClass().add("TextField");
 
 
         Photo2 = new Label();
-        Photo2.setText("Photo 2: ");
+        Photo2.setText(Photo2URL);
+        Photo2.setLayoutX(750);
+        Photo2.setLayoutY(140);
 
 
         Photo2button = new Button();
         Photo2button.setText("Add Photo 2");
+        Photo2button.setLayoutX(650);
+        Photo2button.setLayoutY(140);
 
 
         Photo2.getStyleClass().add("TextField");
 
         Photo3 = new Label();
-        Photo3.setText("Photo 3: ");
+        Photo3.setText(Photo3URL);
+        Photo3.setLayoutX(750);
+        Photo3.setLayoutY(180);
 
         Photo3button = new Button();
         Photo3button.setText("Add Photo 3");
-
+        Photo3button.setLayoutX(650);
+        Photo3button.setLayoutY(180);
 
         Photo3.getStyleClass().add("TextField");
 
         Photo4 = new Label();
-        Photo4.setText("Photo 4: ");
+        Photo4.setText(Photo4URL);
+        Photo4.setLayoutX(750);
+        Photo4.setLayoutY(220);
 
 
         Photo4button = new Button();
         Photo4button.setText("Add Photo 4");
+        Photo4button.setLayoutX(650);
+        Photo4button.setLayoutY(220);
 
 
         Photo4.getStyleClass().add("TextField");
 
         Photo5 = new Label();
-        Photo5.setText("Photo 5: ");
+        Photo5.setText(Photo5URL);
+        Photo5.setLayoutX(750);
+        Photo5.setLayoutY(260);
 
 
         Photo5button = new Button();
         Photo5button.setText("Add Photo 5");
-       
+        Photo5button.setLayoutX(650);
+        Photo5button.setLayoutY(260);
 
         Photo5.getStyleClass().add("TextField");
 
@@ -156,6 +179,11 @@ public class AddAlbumsScene {
         addAlbum.setOnAction((ActionEvent ae) -> AddAlbum());
         addPhoto.setOnAction((ActionEvent ae) -> AddPhoto());
         addLake.setOnAction((ActionEvent ae) -> AddLake());
+        Photo1button.setOnAction((ActionEvent ae) -> Photo1Chooser());
+        Photo2button.setOnAction((ActionEvent ae) -> Photo2Chooser());
+        Photo3button.setOnAction((ActionEvent ae) -> Photo3Chooser());
+        Photo4button.setOnAction((ActionEvent ae) -> Photo4Chooser());
+        Photo5button.setOnAction((ActionEvent ae) -> Photo5Chooser());
         buttonSubmit.setOnAction((ActionEvent ae) -> SubmitAlbum());
 
         final FileChooser fileChooser = new FileChooser();
@@ -181,11 +209,88 @@ public class AddAlbumsScene {
         stage.setWidth(1420);
         stage.setHeight(600);
         rootPane.getStylesheets().add("Controller/simple.css");
-        rootPane.getChildren().addAll(scrollPane, AddAlbumView, AddAlbumView3, buttonSubmit, home, album, addLake, addAlbum, addPhoto, tableview, openMultipleButton);
+        rootPane.getChildren().addAll(scrollPane, AddAlbumView, Photo1button, Photo2button, Photo3button, Photo4button, Photo5button,Photo1, Photo2,Photo3,Photo4,Photo5,buttonSubmit, home, album, addLake, addAlbum, addPhoto, tableview, openMultipleButton);
         rootPane.getStyleClass().add("Pane");
         stage.show();
     }
 
+
+    private static void Photo1Chooser(){
+        Stage stage = new Stage();
+
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("View Pictures");
+        chooser.setInitialDirectory(
+                new File(System.getProperty("user.home"))
+        );
+        File file = chooser.showOpenDialog(stage);
+        if (file != null) {
+            Photo1URL = file.toString();
+            System.out.println(Photo1URL);
+        }
+        System.out.println("You have reached the picture chooser!");
+    }
+
+    private static void Photo2Chooser(){
+        Stage stage = new Stage();
+
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("View Pictures");
+        chooser.setInitialDirectory(
+                new File(System.getProperty("user.home"))
+        );
+        File file = chooser.showOpenDialog(stage);
+        if (file != null) {
+            Photo2URL = file.toString();
+            System.out.println(Photo2URL);
+        }
+        System.out.println("You have reached the picture chooser!");
+    }
+    private static void Photo3Chooser(){
+        Stage stage = new Stage();
+
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("View Pictures");
+        chooser.setInitialDirectory(
+                new File(System.getProperty("user.home"))
+        );
+        File file = chooser.showOpenDialog(stage);
+        if (file != null) {
+            Photo3URL = file.toString();
+            System.out.println(Photo3URL);
+        }
+        System.out.println("You have reached the picture chooser!");
+    }
+    private static void Photo4Chooser(){
+        Stage stage = new Stage();
+
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("View Pictures");
+        chooser.setInitialDirectory(
+                new File(System.getProperty("user.home"))
+        );
+        File file = chooser.showOpenDialog(stage);
+        if (file != null) {
+            Photo4URL = file.toString();
+            System.out.println(Photo4URL);
+        }
+        System.out.println("You have reached the picture chooser!");
+    }
+    private static void Photo5Chooser(){
+        Stage stage = new Stage();
+
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("View Pictures");
+        chooser.setInitialDirectory(
+                new File(System.getProperty("user.home"))
+        );
+        File file = chooser.showOpenDialog(stage);
+        if (file != null) {
+            Photo5URL = file.toString();
+            System.out.println(Photo5URL);
+        }
+        System.out.println("You have reached the picture chooser!");
+    }
 
     private static void SubmitAlbum() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -200,7 +305,6 @@ public class AddAlbumsScene {
 
         System.out.println("Album Name= " + txtFieldAlbumName.getText());
         System.out.println("Date = " + txtFieldDate.getText());
-
 
     }
 }

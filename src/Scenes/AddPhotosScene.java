@@ -37,11 +37,14 @@ public class AddPhotosScene {
     public static TextField txtFieldTime;
     public static TextField txtFieldDistance;
     public static TextField txtFieldDepth;
-    public static ComboBox comboBox;
-    public static ComboBox rigcomboBox;
-    public static ComboBox RigComboBox;
     public static ChoiceBox cb;
+    public static ChoiceBox rigcb;
+    public static ChoiceBox lakebedcb;
+    public static ChoiceBox weathercb;
     public static String ChoiceBoxNumber;
+    public static String rigBoxNumber;
+    public static String lakebedBoxNumber;
+    public static String weatherNumber;
     public static String fileAsString;
 
 
@@ -105,11 +108,6 @@ public class AddPhotosScene {
         AddTagsR[1] = txtFieldTime;
         txtFieldTime.getStyleClass().add("TextField");
 
-        txtFieldWeather = new TextField();
-        txtFieldWeather.setPromptText("Enter Weather: ");
-        AddTagsR[2] = txtFieldWeather;
-        txtFieldWeather.getStyleClass().add("TextField");
-
         AddPhotoViewLeft.getChildren().addAll(AddTagsL);
         AddPhotoViewRight.getChildren().addAll(AddTagsR);
 
@@ -122,19 +120,10 @@ public class AddPhotosScene {
             System.out.println("Selected date: " + date);
         });
 
-
-        ComboBox rigcomboBox = new ComboBox();
-        rigcomboBox.setLayoutX(900);
-        rigcomboBox.setLayoutY(200);
-        rigcomboBox.setPromptText("Enter Rig: ");
-        rigcomboBox.getItems().addAll("Hair Rig", "Blowback Rig", "Chod Rig", "Hinge Stiff Rig", "Supple Hinge Rig", "Combi Rig", "Zig Rig", "Floater Rig", "Other");
-        rigcomboBox.getStyleClass().add("ComboBox");
-
-
         String[] greetings = new String[]{"1", "2", "3","4", "5", "6","7", "8", "9","10", "11", "12"};
             cb = new ChoiceBox(FXCollections.observableArrayList("Mirror Carp", "Common Carp", "Leather Carp", "Koi Carp", "Ghost Carp", "Tench", "Catfish", "Sturgeon", "Bream", "Rudd", "Roach", "Pike", "Perch", "Other"));
             cb.setLayoutX(900);
-            cb.setLayoutY(246);
+            cb.setLayoutY(200);
             cb.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
 
                 public void changed(ObservableValue ov, Number Value, Number new_value) {
@@ -144,13 +133,41 @@ public class AddPhotosScene {
                 }
             });
 
-        /* ComboBox comboBox = new ComboBox();
-        comboBox.setLayoutX(900);
-        comboBox.setLayoutY(246);
-        comboBox.setPromptText("Enter Species: ");
-        comboBox.getItems().addAll("Mirror Carp", "Common Carp", "Leather Carp", "Koi Carp", "Ghost Carp", "Tench", "Catfish", "Sturgeon", "Bream", "Rudd", "Roach", "Pike", "Perch", "Other");
-        comboBox.getStyleClass().add("ComboBox");
-       */
+        rigcb = new ChoiceBox(FXCollections.observableArrayList("Hair Rig", "Blowback Rig", "Chod Rig", "Hinge Stiff Rig", "Supple Hinge Rig", "Combi Rig", "Zig Rig", "Floater Rig", "Other"));
+        rigcb.setLayoutX(900);
+        rigcb.setLayoutY(246);
+        rigcb.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+
+            public void changed(ObservableValue ov, Number Value, Number new_value) {
+
+                System.out.println(greetings[new_value.intValue()]);
+                rigBoxNumber = greetings[new_value.intValue()];
+            }
+        });
+
+        lakebedcb = new ChoiceBox(FXCollections.observableArrayList("Gravel" , "Silt", "Weed", "Clay", "Snags", "Other"));
+        lakebedcb.setLayoutX(900);
+        lakebedcb.setLayoutY(286);
+        lakebedcb.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+
+            public void changed(ObservableValue ov, Number Value, Number new_value) {
+
+                System.out.println(greetings[new_value.intValue()]);
+                lakebedBoxNumber = greetings[new_value.intValue()];
+            }
+        });
+
+        weathercb = new ChoiceBox(FXCollections.observableArrayList("Sunny", "Overcast", "Light Rain", "Heavy Rain", "Snowy", "Fog / Mist", "Other"));
+        weathercb.setLayoutX(900);
+        weathercb.setLayoutY(120);
+        weathercb.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+
+            public void changed(ObservableValue ov, Number Value, Number new_value) {
+
+                System.out.println(greetings[new_value.intValue()]);
+                weatherNumber = greetings[new_value.intValue()];
+            }
+        });
 
         Button buttonSubmit = new Button("Add Catch");
         buttonSubmit.setLayoutX(815);
@@ -205,8 +222,8 @@ public class AddPhotosScene {
         stage.setWidth(1420);
         stage.setHeight(600);
         rootPane.getStylesheets().add("Controller/simple.css");
-        rootPane.getChildren().addAll(scrollPane, AddPhotoViewLeft, AddPhotoViewRight, rigcomboBox, buttonSubmit,
-                home, album, addAlbum, addPhoto, tableview, datePicker, addLake, Addphotofile,cb);
+        rootPane.getChildren().addAll(scrollPane, AddPhotoViewLeft, AddPhotoViewRight, buttonSubmit,
+                home, album, addAlbum, addPhoto, tableview, datePicker, addLake, Addphotofile,cb, rigcb, lakebedcb, weathercb);
         rootPane.getStyleClass().add("Pane");
         stage.show();
     }
@@ -257,6 +274,7 @@ public class AddPhotosScene {
         System.out.println("Time = " + txtFieldTime.getText());
         System.out.println("Weather = " + txtFieldWeather.getText());
         System.out.println("Species = " + ChoiceBoxNumber);
+        System.out.println("Rig = " + rigBoxNumber);
 
 
     }
@@ -274,7 +292,7 @@ public class AddPhotosScene {
             int weightLBINT = parseInt(txtFieldWeightlb.getText());
             int weightOZINT = parseInt(txtFieldWeightoz.getText());
 
-            Catch newCatch = new Catch(8, "11", ChoiceBoxNumber,  txtFieldLake.getText(), txtFieldWeather.getText(), fileAsString, txtFieldSwim.getText(),  "Hinge Supple",  txtFieldBait.getText(), "12/12/72",weightLBINT, weightOZINT , "12:22", parseInt(txtFieldDepth.getText()), parseInt(txtFieldDistance.getText()));
+            Catch newCatch = new Catch(8, "11", ChoiceBoxNumber,  txtFieldLake.getText(), txtFieldWeather.getText(), lakebedBoxNumber, txtFieldSwim.getText(),  rigBoxNumber,  txtFieldBait.getText(), "12/12/72", parseInt(txtFieldWeightlb.getText()), weightOZINT , "12:22", parseInt(txtFieldDepth.getText()), parseInt(txtFieldDistance.getText()));
             CatchService.save(newCatch, database);
         }
 
