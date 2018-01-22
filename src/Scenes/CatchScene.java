@@ -31,7 +31,7 @@ public class CatchScene {
         System.out.println(urlParts[0]);
 
 
-        Image image1 = new Image(CatchService.selectPhotoUrl(8, database).toString(), 650, 525, false, true);
+        Image image1 = new Image(CatchService.selectPhotoUrl(3, database).toString(), 650, 525, false, true);
         ImageView Image1 = new ImageView(image1);
 
         Button home = new Button("Home");

@@ -226,15 +226,15 @@ public class MainController extends Application {
             String[] parts4 = (selectByID2(4,  database).toString().split(","));
             String[] parts5 = (selectByID2(5,  database).toString().split(","));
             String[] parts6 = (selectByID2(6,  database).toString().split(","));
-            String[] parts7 = (selectByID2(7,  database).toString().split(","));
-            String[] parts8 = (selectByID2(8,  database).toString().split(","));
-            String[] parts9 = (selectByID2(9,  database).toString().split(","));
-            String[] parts10 = (selectByID2(10,  database).toString().split(","));
-            String[] parts11 = (selectByID2(11,  database).toString().split(","));
-            String[] parts12 = (selectByID2(12,  database).toString().split(","));
-            String[] parts13 = (selectByID2(13,  database).toString().split(","));
-            String[] parts14 = (selectByID2(14,  database).toString().split(","));
-            String[] parts15 = (selectByID2(15,  database).toString().split(","));
+            String[] parts7 = (selectByID2(3,  database).toString().split(","));
+            String[] parts8 = (selectByID2(1,  database).toString().split(","));
+            String[] parts9 = (selectByID2(1,  database).toString().split(","));
+            String[] parts10 = (selectByID2(1,  database).toString().split(","));
+            String[] parts11 = (selectByID2(1,  database).toString().split(","));
+            String[] parts12 = (selectByID2(1,  database).toString().split(","));
+            String[] parts13 = (selectByID2(1,  database).toString().split(","));
+            String[] parts14 = (selectByID2(1,  database).toString().split(","));
+            String[] parts15 = (selectByID2(1,  database).toString().split(","));
 
             Button button1 = new Button(parts[8]+ " " + parts[9], new ImageView(Peck));
             button1.setContentDisplay(ContentDisplay.TOP);
