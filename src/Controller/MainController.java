@@ -30,6 +30,7 @@ import static Scenes.AddAlbumsScene.AddAlbum;
 import static Scenes.AddLakesScene.AddLake;
 import static Scenes.AlbumScene.Album;
 import static Scenes.CatchScene.*;
+import static java.lang.Integer.parseInt;
 
 
 public class MainController extends Application {
@@ -152,21 +153,23 @@ public class MainController extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        CatchService.selectPhotoUrl(1,  database);
-
-
         try {
+
+            Catch photoEdit = new Catch(5, "3", "2", "1", "2", "2", "1", "7", "3", "22/11/2017", 23, 10, "12:59", 3,4);
+            CatchService.EditPhoto(photoEdit, database);
+
+
             //create the images
-            Image Peck = new Image("Gui/20170912_132539.jpg",400, 300, false, true);  //filename, requestedWidth, requestedHeight, preserveRatio, smooth
-            Image Ali = new Image("Gui/20170912_132539.jpg", 400, 300, false, true);
-            Image Dove = new Image("Gui/20170912_134249.jpg", 400, 300, false, true);
-            Image Fish4 = new Image("Gui/20170414_102301 (2).jpg", 400, 300, false, true);
-            Image Fish5 = new Image("Gui/20170416_113607 (2).jpg", 400, 300, false, true);
-            Image Fish6 = new Image("Gui/20170529_000705.jpg", 400, 300, false, true);
-            Image Fish7 = new Image("Gui/20170806_081318.jpg", 400, 300, false, true);
-            Image Fish8 = new Image("Gui/20170910_021927.jpg", 400, 300, false, true);
-            Image Fish9 = new Image("Gui/20170911_193052.jpg", 400, 300, false, true);
-            Image Fish10 = new Image("Gui/20170913_165904.jpg", 400, 300, false, true);
+            Image Peck = new Image( CatchService.selectPhotoUrl(1 , database).toString(), 400, 300, false, true);
+            Image Ali = new Image(CatchService.selectPhotoUrl(2 , database).toString(), 400, 300, false, true);
+            Image Dove = new Image(CatchService.selectPhotoUrl( 3 , database).toString(), 400, 300, false, true);
+            Image Fish4 = new Image(CatchService.selectPhotoUrl(4 , database).toString(), 400, 300, false, true);
+            Image Fish5 = new Image(CatchService.selectPhotoUrl(5 , database).toString(), 400, 300, false, true);
+            Image Fish6 = new Image(CatchService.selectPhotoUrl(6 , database).toString(), 400, 300, false, true);
+            Image Fish7 = new Image(CatchService.selectPhotoUrl(4 , database).toString(), 400, 300, false, true);
+            Image Fish8 = new Image(CatchService.selectPhotoUrl(5 , database).toString(), 400, 300, false, true);
+            Image Fish9 = new Image(CatchService.selectPhotoUrl(6 , database).toString(), 400, 300, false, true);
+            Image Fish10 = new Image(CatchService.selectPhotoUrl(1 , database).toString(), 400, 300, false, true);
 
 
             ScrollPane scrollPane = new ScrollPane();
@@ -347,6 +350,7 @@ public class MainController extends Application {
         }
        System.out.println(CatchService.selectPhotoUrl(1,  database));
     }
+
 
     private ListView<Catch> CatchPhotoList;
 

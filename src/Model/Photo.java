@@ -24,6 +24,7 @@ public class Photo {
     public void setPhotoID(int photoID) {
         this.photoID = photoID;
     }
+
     @Override
     public String toString() {
         return photoLocation ;

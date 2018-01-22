@@ -20,6 +20,7 @@ import static Model.CatchService.selectByID2;
 import static Scenes.AddAlbumsScene.AddAlbum;
 import static Scenes.AddLakesScene.AddLake;
 import static Scenes.AlbumScene.Album;
+import static java.lang.Integer.parseInt;
 
 public class CatchScene {
 
@@ -29,10 +30,6 @@ public class CatchScene {
         System.out.println(PhotoUrl);
         String[] urlParts = PhotoUrl.split(",");
         System.out.println(urlParts[0]);
-
-
-        Image image1 = new Image(CatchService.selectPhotoUrl(Count, database).toString(), 650, 525, false, true);
-        ImageView Image1 = new ImageView(image1);
 
         Button home = new Button("Home");
         home.setContentDisplay(ContentDisplay.TOP);
@@ -74,15 +71,17 @@ public class CatchScene {
 
         System.out.println(selectByID2(1,  database));
 
-
         String Text = (selectByID2(Count,  database).toString());
         System.out.println(Text);
         String[] parts = Text.split(",");
+
+        Image image1 = new Image(CatchService.selectPhotoUrl(parseInt(parts[0]), database).toString(), 650, 525, false, true);
+        ImageView Image1 = new ImageView(image1);
         
 
         Tags[0] = new Label( "" + parts[8] + parts[9]);
         Tags[1] = new Label(""+ parts[2] );
-        Tags[2] = new Label("" + parts[5]);
+        Tags[2] = new Label(""+ parts[5]);
         Tags[3] = new Label(""+ parts[1]);
         Tags[4] = new Label(""+ parts[6]);
         Tags[5] = new Label(""+ parts[7]);

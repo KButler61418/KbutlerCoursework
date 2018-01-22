@@ -72,7 +72,7 @@ public class CatchService {
                     Url = Photoresults2.getString("photoLocation");
                 }
                 else{
-                    PhotoResult = new Photo("Gui/20170915_020044.jpg", 1000000 );
+                    PhotoResult = new Photo(Url, 1000000 );
                 }
             }
         } catch (SQLException resultsException) {
@@ -80,8 +80,6 @@ public class CatchService {
         }
 
         return PhotoResult;
-
-
     }
 
 
@@ -133,7 +131,6 @@ public class CatchService {
 
         try {
             if (statement != null) {
-
 
                 statement.setInt(1, CatchID);
 
@@ -187,29 +184,29 @@ public class CatchService {
             existingItem = selectByID(itemToSave.getCatchID(), database);
         }
 
-
         try {
 
-            PreparedStatement statement = database.newStatement("UPDATE Catch SET photoID, speciesID, lakeID, weatherType, lakebedType, swim, rig, bait, date, weightLB, weightOZ, time, depth, distance =?  WHERE CatchID = ?");
-            statement.setInt(1, itemToSave.getCatchID());
-            statement.setString(2, itemToSave.getPhotoID());
-            statement.setString(3, itemToSave.getSpeciesType());
-            statement.setString(4, itemToSave.getLakeName());
-            statement.setString(5, itemToSave.getWeatherType());
-            statement.setString(6, itemToSave.getLakebedType());
-            statement.setString(7, itemToSave.getSwim());
-            statement.setString(8, itemToSave.getRig());
-            statement.setString(9, itemToSave.getBait());
-            statement.setString(10, itemToSave.getDate());
-            statement.setInt(11, itemToSave.getWeightLB());
-            statement.setInt(12, itemToSave.getWeightOZ());
-            statement.setString(13, itemToSave.getTime());
-            statement.setFloat(14, itemToSave.getDepth());
-            statement.setFloat(15, itemToSave.getDistance());
+            PreparedStatement statement = database.newStatement("UPDATE Catch SET photoID=?, speciesID=?, lakeID=?, rig = ?  WHERE CatchID = ?");
+            statement.setInt(5, itemToSave.getCatchID());
+            statement.setString(1, itemToSave.getPhotoID());
+            statement.setString(2, itemToSave.getSpeciesType());
+            statement.setString(3, itemToSave.getLakeName());
+            //statement.setString(5, itemToSave.getWeatherType());
+            //statement.setString(6, itemToSave.getLakebedType());
+            //statement.setString(7, itemToSave.getSwim());
+            statement.setString(4, itemToSave.getRig());
+            //statement.setString(9, itemToSave.getBait());
+            //statement.setString(10, itemToSave.getDate());
+            //statement.setInt(11, itemToSave.getWeightLB());
+            //statement.setInt(12, itemToSave.getWeightOZ());
+            //statement.setString(13, itemToSave.getTime());
+            //statement.setFloat(14, itemToSave.getDepth());
+            //statement.setFloat(15, itemToSave.getDistance());
             database.executeUpdate(statement);
 
         } catch (SQLException resultsException) {
             System.out.println("Database saving error: " + resultsException.getMessage());
         }
+
     }
 }
