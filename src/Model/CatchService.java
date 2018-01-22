@@ -114,7 +114,7 @@ public class CatchService {
                 if (results != null) {
                     result = new Catch(results.getInt("catchID"), results.getString("photoID"), results2.getString("speciesType"), results3.getString("lakeName"), results5.getString("weatherType"), results6.getString("lakebedType"), results4.getString("swimName"), results7.getString("rigType"), results.getString("bait"), results.getString("date"), results.getInt("weightLB"), results.getInt("weightOZ"), results.getString("time"), results.getInt("depth"), results.getInt("distance"));
                 } else{
-                    result = new Catch(0, null, null, null, null, null, null, null, null, null, 0, 0, null, 0, 0);
+                    result = new Catch(0, "...", "...", "...", "...", "...", "...", "...", "...", "...", 0, 0, "...", 0, 0);
                 }
             }
         } catch (SQLException resultsException) {

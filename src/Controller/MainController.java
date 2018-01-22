@@ -29,7 +29,7 @@ import static Model.CatchService.selectByID2;
 import static Scenes.AddAlbumsScene.AddAlbum;
 import static Scenes.AddLakesScene.AddLake;
 import static Scenes.AlbumScene.Album;
-import static Scenes.CatchScene.CatchDisplay;
+import static Scenes.CatchScene.*;
 
 
 public class MainController extends Application {
@@ -154,6 +154,7 @@ public class MainController extends Application {
 
         CatchService.selectPhotoUrl(1,  database);
 
+
         try {
             //create the images
             Image Peck = new Image("Gui/20170912_132539.jpg",400, 300, false, true);  //filename, requestedWidth, requestedHeight, preserveRatio, smooth
@@ -226,13 +227,13 @@ public class MainController extends Application {
             String[] parts4 = (selectByID2(4,  database).toString().split(","));
             String[] parts5 = (selectByID2(5,  database).toString().split(","));
             String[] parts6 = (selectByID2(6,  database).toString().split(","));
-            String[] parts7 = (selectByID2(3,  database).toString().split(","));
-            String[] parts8 = (selectByID2(1,  database).toString().split(","));
-            String[] parts9 = (selectByID2(1,  database).toString().split(","));
-            String[] parts10 = (selectByID2(1,  database).toString().split(","));
-            String[] parts11 = (selectByID2(1,  database).toString().split(","));
-            String[] parts12 = (selectByID2(1,  database).toString().split(","));
-            String[] parts13 = (selectByID2(1,  database).toString().split(","));
+            String[] parts7 = (selectByID2(1,  database).toString().split(","));
+            String[] parts8 = (selectByID2(2,  database).toString().split(","));
+            String[] parts9 = (selectByID2(3,  database).toString().split(","));
+            String[] parts10 = (selectByID2(4,  database).toString().split(","));
+            String[] parts11 = (selectByID2(5,  database).toString().split(","));
+            String[] parts12 = (selectByID2(6,  database).toString().split(","));
+            String[] parts13 = (selectByID2(3,  database).toString().split(","));
             String[] parts14 = (selectByID2(1,  database).toString().split(","));
             String[] parts15 = (selectByID2(1,  database).toString().split(","));
 
@@ -297,21 +298,21 @@ public class MainController extends Application {
             button15.getStyleClass().add("FishButton");
 
 
-            button1.setOnAction((ActionEvent ae) -> CatchDisplay());
-            button2.setOnAction((ActionEvent ae) -> CatchDisplay());
-            button3.setOnAction((ActionEvent ae) -> CatchDisplay());
-            button4.setOnAction((ActionEvent ae) -> CatchDisplay());
-            button5.setOnAction((ActionEvent ae) -> CatchDisplay());
-            button6.setOnAction((ActionEvent ae) -> CatchDisplay());
-            button7.setOnAction((ActionEvent ae) -> CatchDisplay());
-            button8.setOnAction((ActionEvent ae) -> CatchDisplay());
-            button9.setOnAction((ActionEvent ae) -> CatchDisplay());
-            button10.setOnAction((ActionEvent ae) -> CatchDisplay());
-            button11.setOnAction((ActionEvent ae) -> CatchDisplay());
-            button12.setOnAction((ActionEvent ae) -> CatchDisplay());
-            button13.setOnAction((ActionEvent ae) -> CatchDisplay());
-            button14.setOnAction((ActionEvent ae) -> CatchDisplay());
-            button15.setOnAction((ActionEvent ae) -> CatchDisplay());
+            button1.setOnAction((ActionEvent ae) -> DisplayCatch1());
+            button2.setOnAction((ActionEvent ae) -> DisplayCatch2());
+            button3.setOnAction((ActionEvent ae) -> DisplayCatch3());
+            button4.setOnAction((ActionEvent ae) -> DisplayCatch4());
+            button5.setOnAction((ActionEvent ae) -> DisplayCatch5());
+            button6.setOnAction((ActionEvent ae) -> DisplayCatch6());
+            button7.setOnAction((ActionEvent ae) -> DisplayCatch7());
+            button8.setOnAction((ActionEvent ae) -> DisplayCatch8());
+            button9.setOnAction((ActionEvent ae) -> DisplayCatch9());
+            button10.setOnAction((ActionEvent ae) -> DisplayCatch10());
+            button11.setOnAction((ActionEvent ae) -> DisplayCatch11());
+            button12.setOnAction((ActionEvent ae) -> DisplayCatch12());
+            button13.setOnAction((ActionEvent ae) -> DisplayCatch13());
+            button14.setOnAction((ActionEvent ae) -> DisplayCatch14());
+            button15.setOnAction((ActionEvent ae) -> DisplayCatch15());
 
             root.add(button1, 0, 0);
             root.add(button2, 1, 0);

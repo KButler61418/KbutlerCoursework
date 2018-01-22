@@ -31,7 +31,7 @@ public class CatchScene {
         System.out.println(urlParts[0]);
 
 
-        Image image1 = new Image(CatchService.selectPhotoUrl(3, database).toString(), 650, 525, false, true);
+        Image image1 = new Image(CatchService.selectPhotoUrl(Count, database).toString(), 650, 525, false, true);
         ImageView Image1 = new ImageView(image1);
 
         Button home = new Button("Home");
@@ -75,7 +75,7 @@ public class CatchScene {
         System.out.println(selectByID2(1,  database));
 
 
-        String Text = (selectByID2(1,  database).toString());
+        String Text = (selectByID2(Count,  database).toString());
         System.out.println(Text);
         String[] parts = Text.split(",");
         
@@ -112,6 +112,37 @@ public class CatchScene {
         rootPane.getStylesheets().add("Controller/simple.css");
         stage.show();
     }
+    public static int Count;
+    public static void DisplayCatch1(){ Count = 1;CatchDisplay(); }
+
+    public static void DisplayCatch2(){ Count = 2;CatchDisplay(); }
+
+    public static void DisplayCatch3(){ Count = 3;CatchDisplay(); }
+
+    public static void DisplayCatch4(){ Count = 4;CatchDisplay(); }
+
+    public static void DisplayCatch5(){ Count = 5;CatchDisplay(); }
+
+    public static void DisplayCatch6(){ Count = 6;CatchDisplay(); }
+
+    public static void DisplayCatch7(){ Count = 7;CatchDisplay(); }
+
+    public static void DisplayCatch8(){ Count = 8;CatchDisplay(); }
+
+    public static void DisplayCatch9(){ Count = 9;CatchDisplay(); }
+
+    public static void DisplayCatch10(){ Count = 10;CatchDisplay(); }
+
+    public static void DisplayCatch11(){ Count = 11;CatchDisplay(); }
+
+    public static void DisplayCatch12(){ Count = 12;CatchDisplay(); }
+
+    public static void DisplayCatch13(){ Count = 13;CatchDisplay(); }
+
+    public static void DisplayCatch14(){ Count = 14;CatchDisplay(); }
+
+    public static void DisplayCatch15(){ Count = 15;CatchDisplay(); }
+
 }
 
 
