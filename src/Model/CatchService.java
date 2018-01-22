@@ -52,32 +52,38 @@ public class CatchService {
     public static Photo selectPhotoUrl(int CatchID, DatabaseConnection database) {
 
 
-        PreparedStatement statement = database.newStatement("SELECT catchID,photoID,speciesID,lakeID,weatherType,lakebedType,swim,rig,bait,date,weightLB,weightOZ,time,depth,distance FROM catch WHERE CatchID = ?");
-        PreparedStatement statement2 = database.newStatement("SELECT Photo.photoLocation FROM Photo INNER JOIN Catch ON Catch.photoID = Photo.photoID");
-        Photo result = null;
+        PreparedStatement statements = database.newStatement("SELECT catchID,photoID,speciesID,lakeID,weatherType,lakebedType,swim,rig,bait,date,weightLB,weightOZ,time,depth,distance FROM catch WHERE CatchID = ?");
+        PreparedStatement statements2 = database.newStatement("SELECT Photo.photoLocation FROM Photo INNER JOIN Catch ON Catch.photoID = Photo.photoID");
+        Photo PhotoResult = null;
         String Url = null;
+
         try {
 
-            if (statement != null && statement2 != null) {
+            if (statements != null && statements2 != null) {
 
-                statement.setInt(1, CatchID);
+                statements.setInt(1, CatchID);
 
-                ResultSet results = database.executeQuery(statement);
-                ResultSet results2 = database.executeQuery(statement2);
+                ResultSet Photoresults = database.executeQuery(statements);
+                ResultSet Photoresults2 = database.executeQuery(statements2);
 
-                if (results != null && results2 != null) {
-                    result = new Photo(results2.getString("photoLocation"), results.getInt("photoID"));
-                    System.out.println ("Photo Url: " + results2.getString("photoLocation"));
-                    Url = results2.getString("photoLocation");
+                if (Photoresults != null && Photoresults2 != null) {
+                    PhotoResult = new Photo(Photoresults2.getString("photoLocation"), Photoresults.getInt("photoID"));
+                    System.out.println ("Photo Url: " + Photoresults2.getString("photoLocation"));
+                    Url = Photoresults2.getString("photoLocation");
+                }
+                else{
+                    PhotoResult = new Photo("Gui/20170915_020044.jpg", 1000000 );
                 }
             }
         } catch (SQLException resultsException) {
             System.out.println("Database select by id error: " + resultsException.getMessage());
         }
 
-        return result;
+        return PhotoResult;
+
 
     }
+
 
     public static Catch selectByID2(int CatchID, DatabaseConnection database) {
 
@@ -107,7 +113,8 @@ public class CatchService {
 
                 if (results != null) {
                     result = new Catch(results.getInt("catchID"), results.getString("photoID"), results2.getString("speciesType"), results3.getString("lakeName"), results5.getString("weatherType"), results6.getString("lakebedType"), results4.getString("swimName"), results7.getString("rigType"), results.getString("bait"), results.getString("date"), results.getInt("weightLB"), results.getInt("weightOZ"), results.getString("time"), results.getInt("depth"), results.getInt("distance"));
-
+                } else{
+                    result = new Catch(0, null, null, null, null, null, null, null, null, null, 0, 0, null, 0, 0);
                 }
             }
         } catch (SQLException resultsException) {

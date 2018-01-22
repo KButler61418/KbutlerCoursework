@@ -25,7 +25,13 @@ public class CatchScene {
 
     public static void CatchDisplay() {
 
-        Image image1 = new Image("Gui/20170912_132539.jpg", 650, 525, false, true);
+        String PhotoUrl = (CatchService.selectPhotoUrl(3, database).toString());
+        System.out.println(PhotoUrl);
+        String[] urlParts = PhotoUrl.split(",");
+        System.out.println(urlParts[0]);
+
+
+        Image image1 = new Image(CatchService.selectPhotoUrl(8, database).toString(), 650, 525, false, true);
         ImageView Image1 = new ImageView(image1);
 
         Button home = new Button("Home");

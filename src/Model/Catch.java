@@ -104,7 +104,6 @@ public class Catch {
     public String getBait() {
         return bait;
     }
-
     public void setBait(String bait) {
         this.bait = bait;
     }
@@ -112,13 +111,11 @@ public class Catch {
     public String getDate() {
         return date;
     }
-
     public void setDate(String date) {
         this.date = date;
     }
 
     public int getWeightLB() { return weightLB; }
-
     public void setWeightLB(int weightLB) {
         this.weightLB = weightLB;
     }
@@ -126,8 +123,6 @@ public class Catch {
     public int getWeightOZ() {
         return weightOZ;
     }
-
-
     public void setWeightOZ(int weightOZ) {
         this.weightOZ = weightOZ;
     }
@@ -142,7 +137,6 @@ public class Catch {
     public int getDepth() {
         return depth;
     }
-
     public void setDepth(int depth) {
         this.depth = depth;
     }
@@ -150,7 +144,6 @@ public class Catch {
     public int getDistance() {
         return distance;
     }
-
     public void setDistance(int distance) {
         this.distance = distance;
     }

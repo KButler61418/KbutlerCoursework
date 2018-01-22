@@ -25,6 +25,7 @@ import javafx.scene.control.Alert.AlertType;
 import java.util.ArrayList;
 import java.util.Optional;
 
+import static Model.CatchService.selectByID2;
 import static Scenes.AddAlbumsScene.AddAlbum;
 import static Scenes.AddLakesScene.AddLake;
 import static Scenes.AlbumScene.Album;
@@ -219,63 +220,79 @@ public class MainController extends Application {
             addPhoto.setOnAction((ActionEvent ae) -> AddPhotosScene.AddPhoto());
             addLake.setOnAction((ActionEvent ae) -> AddLake());
 
-            Button button1 = new Button("35lb 1oz", new ImageView(Peck));
+            String[] parts = (selectByID2(1,  database).toString().split(","));
+            String[] parts2 = (selectByID2(2,  database).toString().split(","));
+            String[] parts3= (selectByID2(3,  database).toString().split(","));
+            String[] parts4 = (selectByID2(4,  database).toString().split(","));
+            String[] parts5 = (selectByID2(5,  database).toString().split(","));
+            String[] parts6 = (selectByID2(6,  database).toString().split(","));
+            String[] parts7 = (selectByID2(7,  database).toString().split(","));
+            String[] parts8 = (selectByID2(8,  database).toString().split(","));
+            String[] parts9 = (selectByID2(9,  database).toString().split(","));
+            String[] parts10 = (selectByID2(10,  database).toString().split(","));
+            String[] parts11 = (selectByID2(11,  database).toString().split(","));
+            String[] parts12 = (selectByID2(12,  database).toString().split(","));
+            String[] parts13 = (selectByID2(13,  database).toString().split(","));
+            String[] parts14 = (selectByID2(14,  database).toString().split(","));
+            String[] parts15 = (selectByID2(15,  database).toString().split(","));
+
+            Button button1 = new Button(parts[8]+ " " + parts[9], new ImageView(Peck));
             button1.setContentDisplay(ContentDisplay.TOP);
             button1.getStyleClass().add("FishButton");
 
-            Button button2 = new Button("Fish 2", new ImageView(Ali));
+            Button button2 = new Button(parts2[8]+ " " + parts2[9], new ImageView(Ali));
             button2.setContentDisplay(ContentDisplay.TOP);
             button2.getStyleClass().add("FishButton");
 
-            Button button3 = new Button("Fish 3", new ImageView(Dove));
+            Button button3 = new Button(parts3[8]+ " " + parts3[9], new ImageView(Dove));
             button3.setContentDisplay(ContentDisplay.TOP);
             button3.getStyleClass().add("FishButton");
 
-            Button button4 = new Button("Fish 4", new ImageView(Fish4));
+            Button button4 = new Button(parts4[8]+ " " + parts4[9], new ImageView(Fish4));
             button4.setContentDisplay(ContentDisplay.TOP);
             button4.getStyleClass().add("FishButton");
 
-            Button button5 = new Button("Fish 5", new ImageView(Fish5));
+            Button button5 = new Button(parts5[8]+ " " + parts5[9], new ImageView(Fish5));
             button5.setContentDisplay(ContentDisplay.TOP);
             button5.getStyleClass().add("FishButton");
 
-            Button button6 = new Button("Fish 6", new ImageView(Fish6));
+            Button button6 = new Button(parts6[8]+ " " + parts6[9], new ImageView(Fish6));
             button6.setContentDisplay(ContentDisplay.TOP);
             button6.getStyleClass().add("FishButton");
 
-            Button button7 = new Button("Fish 7", new ImageView(Fish7));
+            Button button7 = new Button(parts7[8]+ " " + parts7[9], new ImageView(Fish7));
             button7.setContentDisplay(ContentDisplay.TOP);
             button7.getStyleClass().add("FishButton");
 
-            Button button8 = new Button("Fish 8", new ImageView(Fish8));
+            Button button8 = new Button(parts8[8]+ " " + parts8[9], new ImageView(Fish8));
             button8.setContentDisplay(ContentDisplay.TOP);
             button8.getStyleClass().add("FishButton");
 
-            Button button9 = new Button("Fish 9", new ImageView(Fish9));
+            Button button9 = new Button(parts9[8]+ " " + parts9[9], new ImageView(Fish9));
             button9.setContentDisplay(ContentDisplay.TOP);
             button9.getStyleClass().add("FishButton");
 
-            Button button10 = new Button("Fish 10", new ImageView(Fish10));
+            Button button10 = new Button(parts10[8]+ " " + parts10[9], new ImageView(Fish10));
             button10.setContentDisplay(ContentDisplay.TOP);
             button10.getStyleClass().add("FishButton");
 
-            Button button11 = new Button("Fish 11", new ImageView(Peck));
+            Button button11 = new Button(parts11[8]+ " " + parts11[9], new ImageView(Peck));
             button11.setContentDisplay(ContentDisplay.TOP);
             button11.getStyleClass().add("FishButton");
 
-            Button button12 = new Button("Fish 12", new ImageView(Ali));
+            Button button12 = new Button(parts12[8]+ " " + parts12[9], new ImageView(Ali));
             button12.setContentDisplay(ContentDisplay.TOP);
             button12.getStyleClass().add("FishButton");
 
-            Button button13 = new Button("Fish 13", new ImageView(Dove));
+            Button button13 = new Button(parts13[8]+ " " + parts13[9], new ImageView(Dove));
             button13.setContentDisplay(ContentDisplay.TOP);
             button13.getStyleClass().add("FishButton");
 
-            Button button14 = new Button("Fish 14", new ImageView(Fish4));
+            Button button14 = new Button(parts14[8]+ " " + parts14[9], new ImageView(Fish4));
             button14.setContentDisplay(ContentDisplay.TOP);
             button14.getStyleClass().add("FishButton");
 
-            Button button15 = new Button("Fish 15", new ImageView(Fish7));
+            Button button15 = new Button(parts15[8]+ " " + parts15[9], new ImageView(Fish7));
             button15.setContentDisplay(ContentDisplay.TOP);
             button15.getStyleClass().add("FishButton");
 
