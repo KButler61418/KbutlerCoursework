@@ -155,21 +155,22 @@ public class MainController extends Application {
 
         try {
 
-            Catch photoEdit = new Catch(5, "3", "2", "1", "2", "2", "1", "7", "3", "22/11/2017", 23, 10, "12:59", 3,4);
-            CatchService.EditPhoto(photoEdit, database);
-
-
             //create the images
-            Image Peck = new Image( CatchService.selectPhotoUrl(1 , database).toString(), 400, 300, false, true);
-            Image Ali = new Image(CatchService.selectPhotoUrl(2 , database).toString(), 400, 300, false, true);
-            Image Dove = new Image(CatchService.selectPhotoUrl( 3 , database).toString(), 400, 300, false, true);
+            Image Fish1 = new Image( CatchService.selectPhotoUrl(1, database).toString(), 400, 300, false, true);
+            Image Fish2 = new Image(CatchService.selectPhotoUrl(2, database).toString(), 400, 300, false, true);
+            Image Fish3= new Image(CatchService.selectPhotoUrl(3, database).toString(), 400, 300, false, true);
             Image Fish4 = new Image(CatchService.selectPhotoUrl(4 , database).toString(), 400, 300, false, true);
             Image Fish5 = new Image(CatchService.selectPhotoUrl(5 , database).toString(), 400, 300, false, true);
             Image Fish6 = new Image(CatchService.selectPhotoUrl(6 , database).toString(), 400, 300, false, true);
-            Image Fish7 = new Image(CatchService.selectPhotoUrl(4 , database).toString(), 400, 300, false, true);
-            Image Fish8 = new Image(CatchService.selectPhotoUrl(5 , database).toString(), 400, 300, false, true);
-            Image Fish9 = new Image(CatchService.selectPhotoUrl(6 , database).toString(), 400, 300, false, true);
-            Image Fish10 = new Image(CatchService.selectPhotoUrl(1 , database).toString(), 400, 300, false, true);
+            Image Fish7 = new Image(CatchService.selectPhotoUrl(7 , database).toString(), 400, 300, false, true);
+            Image Fish8 = new Image(CatchService.selectPhotoUrl(8, database).toString(), 400, 300, false, true);
+            Image Fish9 = new Image(CatchService.selectPhotoUrl(9 , database).toString(), 400, 300, false, true);
+            Image Fish10 = new Image(CatchService.selectPhotoUrl(10 , database).toString(), 400, 300, false, true);
+            Image Fish11 = new Image(CatchService.selectPhotoUrl(11, database).toString(), 400, 300, false, true);
+            Image Fish12 = new Image(CatchService.selectPhotoUrl(12, database).toString(), 400, 300, false, true);
+            Image Fish13 = new Image(CatchService.selectPhotoUrl(13, database).toString(), 400, 300, false, true);
+            Image Fish14 = new Image(CatchService.selectPhotoUrl(14, database).toString(), 400, 300, false, true);
+            Image Fish15 = new Image(CatchService.selectPhotoUrl(15, database).toString(), 400, 300, false, true);
 
 
             ScrollPane scrollPane = new ScrollPane();
@@ -230,25 +231,25 @@ public class MainController extends Application {
             String[] parts4 = (selectByID2(4,  database).toString().split(","));
             String[] parts5 = (selectByID2(5,  database).toString().split(","));
             String[] parts6 = (selectByID2(6,  database).toString().split(","));
-            String[] parts7 = (selectByID2(1,  database).toString().split(","));
-            String[] parts8 = (selectByID2(2,  database).toString().split(","));
-            String[] parts9 = (selectByID2(3,  database).toString().split(","));
-            String[] parts10 = (selectByID2(4,  database).toString().split(","));
-            String[] parts11 = (selectByID2(5,  database).toString().split(","));
-            String[] parts12 = (selectByID2(6,  database).toString().split(","));
-            String[] parts13 = (selectByID2(3,  database).toString().split(","));
-            String[] parts14 = (selectByID2(1,  database).toString().split(","));
-            String[] parts15 = (selectByID2(1,  database).toString().split(","));
+            String[] parts7 = (selectByID2(7,  database).toString().split(","));
+            String[] parts8 = (selectByID2(8,  database).toString().split(","));
+            String[] parts9 = (selectByID2(9,  database).toString().split(","));
+            String[] parts10 = (selectByID2(10,  database).toString().split(","));
+            String[] parts11 = (selectByID2(11,  database).toString().split(","));
+            String[] parts12 = (selectByID2(12,  database).toString().split(","));
+            String[] parts13 = (selectByID2(13,  database).toString().split(","));
+            String[] parts14 = (selectByID2(14,  database).toString().split(","));
+            String[] parts15 = (selectByID2(15,  database).toString().split(","));
 
-            Button button1 = new Button(parts[8]+ " " + parts[9], new ImageView(Peck));
+            Button button1 = new Button(parts[8]+ " " + parts[9], new ImageView(Fish1));
             button1.setContentDisplay(ContentDisplay.TOP);
             button1.getStyleClass().add("FishButton");
 
-            Button button2 = new Button(parts2[8]+ " " + parts2[9], new ImageView(Ali));
+            Button button2 = new Button(parts2[8]+ " " + parts2[9], new ImageView(Fish2));
             button2.setContentDisplay(ContentDisplay.TOP);
             button2.getStyleClass().add("FishButton");
 
-            Button button3 = new Button(parts3[8]+ " " + parts3[9], new ImageView(Dove));
+            Button button3 = new Button(parts3[8]+ " " + parts3[9], new ImageView(Fish3));
             button3.setContentDisplay(ContentDisplay.TOP);
             button3.getStyleClass().add("FishButton");
 
@@ -280,23 +281,23 @@ public class MainController extends Application {
             button10.setContentDisplay(ContentDisplay.TOP);
             button10.getStyleClass().add("FishButton");
 
-            Button button11 = new Button(parts11[8]+ " " + parts11[9], new ImageView(Peck));
+            Button button11 = new Button(parts11[8]+ " " + parts11[9], new ImageView(Fish11));
             button11.setContentDisplay(ContentDisplay.TOP);
             button11.getStyleClass().add("FishButton");
 
-            Button button12 = new Button(parts12[8]+ " " + parts12[9], new ImageView(Ali));
+            Button button12 = new Button(parts12[8]+ " " + parts12[9], new ImageView(Fish12));
             button12.setContentDisplay(ContentDisplay.TOP);
             button12.getStyleClass().add("FishButton");
 
-            Button button13 = new Button(parts13[8]+ " " + parts13[9], new ImageView(Dove));
+            Button button13 = new Button(parts13[8]+ " " + parts13[9], new ImageView(Fish13));
             button13.setContentDisplay(ContentDisplay.TOP);
             button13.getStyleClass().add("FishButton");
 
-            Button button14 = new Button(parts14[8]+ " " + parts14[9], new ImageView(Fish4));
+            Button button14 = new Button(parts14[8]+ " " + parts14[9], new ImageView(Fish14));
             button14.setContentDisplay(ContentDisplay.TOP);
             button14.getStyleClass().add("FishButton");
 
-            Button button15 = new Button(parts15[8]+ " " + parts15[9], new ImageView(Fish7));
+            Button button15 = new Button(parts15[8]+ " " + parts15[9], new ImageView(Fish15));
             button15.setContentDisplay(ContentDisplay.TOP);
             button15.getStyleClass().add("FishButton");
 

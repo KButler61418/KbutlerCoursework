@@ -26,7 +26,7 @@ public class CatchScene {
 
     public static void CatchDisplay() {
 
-        String PhotoUrl = (CatchService.selectPhotoUrl(3, database).toString());
+        String PhotoUrl = (CatchService.selectPhotoUrl(2, database).toString());
         System.out.println(PhotoUrl);
         String[] urlParts = PhotoUrl.split(",");
         System.out.println(urlParts[0]);

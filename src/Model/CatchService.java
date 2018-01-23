@@ -52,34 +52,26 @@ public class CatchService {
     public static Photo selectPhotoUrl(int CatchID, DatabaseConnection database) {
 
 
-        PreparedStatement statements = database.newStatement("SELECT catchID,photoID,speciesID,lakeID,weatherType,lakebedType,swim,rig,bait,date,weightLB,weightOZ,time,depth,distance FROM catch WHERE CatchID = ?");
-        PreparedStatement statements2 = database.newStatement("SELECT Photo.photoLocation FROM Photo INNER JOIN Catch ON Catch.photoID = Photo.photoID");
+        PreparedStatement statements = database.newStatement("SELECT Photo.photoLocation, Photo.photoID FROM Photo INNER JOIN Catch ON Catch.photoID = Photo.photoID WHERE catchID = ?");
         Photo PhotoResult = null;
         String Url = null;
 
         try {
-
-            if (statements != null && statements2 != null) {
-
                 statements.setInt(1, CatchID);
 
                 ResultSet Photoresults = database.executeQuery(statements);
-                ResultSet Photoresults2 = database.executeQuery(statements2);
 
-                if (Photoresults != null && Photoresults2 != null) {
-                    PhotoResult = new Photo(Photoresults2.getString("photoLocation"), Photoresults.getInt("photoID"));
-                    System.out.println ("Photo Url: " + Photoresults2.getString("photoLocation"));
-                    Url = Photoresults2.getString("photoLocation");
+                if (Photoresults != null) {
+                    PhotoResult = new Photo(Photoresults.getString("photoLocation"), Photoresults.getInt("photoID"));
+                    System.out.println("Photo Url: " + Photoresults.getString("photoLocation"));
+                    Url = Photoresults.getString("photoLocation");
                 }
-                else{
-                    PhotoResult = new Photo(Url, 1000000 );
-                }
-            }
         } catch (SQLException resultsException) {
             System.out.println("Database select by id error: " + resultsException.getMessage());
         }
 
         return PhotoResult;
+
     }
 
 
