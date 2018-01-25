@@ -1,9 +1,6 @@
 package Scenes;
 
-import Model.Album;
-import Model.AlbumService;
-import Model.Location;
-import Model.LocationService;
+import Model.*;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -15,6 +12,7 @@ import java.util.Optional;
 
 import static Controller.MainController.database;
 import static Scenes.AddAlbumsScene.AddAlbum;
+import static Scenes.AddPhotosScene.AddPhoto;
 import static Scenes.AlbumScene.Album;
 
 
@@ -104,10 +102,9 @@ public class AddLakesScene {
         addLake.setLayoutX(390);
         addLake.getStyleClass().add("MenuButton");
 
-        //home.setOnAction((ActionEvent ae) -> HomeScene());
         album.setOnAction((ActionEvent ae) -> Album());
         addAlbum.setOnAction((ActionEvent ae) -> AddAlbum());
-        addPhoto.setOnAction((ActionEvent ae) -> AddPhotosScene.AddPhoto());
+        addPhoto.setOnAction((ActionEvent ae) -> AddPhoto());
         addLake.setOnAction((ActionEvent ae) -> AddLake());
         buttonSubmit.setOnAction((ActionEvent ae)-> SubmitLake());
 
@@ -124,12 +121,7 @@ public class AddLakesScene {
     }
 
     private static void SubmitLake() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText(null);
         GetTextfieldLakeEnteries();
-        alert.setContentText("This feature is currently unavailable!!");
-
-        alert.showAndWait();
         createNewPizza();
     }
 
@@ -144,18 +136,16 @@ public class AddLakesScene {
 } public static void createNewPizza() {
 
         TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Create new pizza");
+        dialog.setTitle("Enter 'Confirm' to add lake");
         dialog.setHeaderText(null);
-        dialog.setContentText("Pizza's name:");
+        dialog.setContentText("Confirmation:");
         Optional<String> result = dialog.showAndWait();
 
         if (result.isPresent() && !result.get().equals("")) {
-
             Location newLocation = new Location(1, txtFieldLakeName.getText(), txtFieldStreet.getText(), txtFieldTown.getText(), txtFieldCounty.getText(), txtFieldPostcode.getText());
             LocationService.saveLocation(newLocation, database);
 
         }
-
 
     }
 

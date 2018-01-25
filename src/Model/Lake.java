@@ -3,12 +3,20 @@ package Model;
 public class Lake {
     private String lakeName;
     private int locationID;
+    private int lakeID;
 
-
-    public Lake(String lakeName, int locationID) {
+    public Lake(String lakeName, int locationID, int lakeID) {
         this.lakeName = lakeName;
         this.locationID = locationID;
 
+    }
+
+    public int getLakeID() {
+        return lakeID;
+    }
+
+    public void setLakeID(int lakeID) {
+        this.lakeID = lakeID;
     }
 
     public String getLakeName() {
@@ -29,7 +37,7 @@ public class Lake {
 
     @Override
     public String toString() {
-        return lakeName;
+        return lakeName + locationID + lakeID;
     }
-
 }
+

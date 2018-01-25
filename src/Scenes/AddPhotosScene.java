@@ -232,8 +232,6 @@ public class AddPhotosScene {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);
         GetTextfieldEnteries();
-        alert.setContentText("This feature is currently unavailable!!");
-
         alert.showAndWait();
         createNewPizza();
     }
@@ -282,9 +280,9 @@ public class AddPhotosScene {
     public static void createNewPizza() {
 
         TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Create new pizza");
+        dialog.setTitle("Enter 'Confirm' to add photo");
         dialog.setHeaderText(null);
-        dialog.setContentText("Pizza's name:");
+        dialog.setContentText("Confirmation:");
         Optional<String> result = dialog.showAndWait();
 
         if (result.isPresent() && !result.get().equals("")) {

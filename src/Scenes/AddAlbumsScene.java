@@ -197,20 +197,20 @@ public class AddAlbumsScene {
         rootPane.getChildren().addAll(scrollPane, AddAlbumView, Photo1button, Photo2button, Photo3button, Photo4button, Photo5button,Photo1, Photo2,Photo3,Photo4,Photo5,buttonSubmit, home, album, addLake, addAlbum, addPhoto, tableview, openMultipleButton);
         rootPane.getStyleClass().add("Pane");
         stage.show();
-        createNewPizza();
+
     }
 
     public static void createNewPizza() {
 
         TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Create new pizza");
+        dialog.setTitle("Enter 'Confirm' to add Album");
         dialog.setHeaderText(null);
-        dialog.setContentText("Pizza's name:");
+        dialog.setContentText("Confirmation:");
         Optional<String> result = dialog.showAndWait();
 
         if (result.isPresent() && !result.get().equals("")) {
 
-            Album newAlbum = new Album(1, txtFieldAlbumName.getText(), 1, 2, 3,4,5 );
+            Album newAlbum = new Album(1, txtFieldAlbumName.getText(), Photo1URL, Photo2URL, Photo3URL,Photo4URL,Photo5URL);
             AlbumService.saveAlbum(newAlbum, database);
 
         }
@@ -295,12 +295,8 @@ public class AddAlbumsScene {
     }
 
     private static void SubmitAlbum() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText(null);
         GetTextfieldAlbumEnteries();
-        alert.setContentText("This feature is currently unavailable!!");
-
-        alert.showAndWait();
+        createNewPizza();
     }
 
     private static void GetTextfieldAlbumEnteries() {

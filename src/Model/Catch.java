@@ -150,7 +150,7 @@ public class Catch {
 
     @Override
     public String toString() {
-        return  photoID + ",Species: " + speciesType+ ",Lake: " + lakeName +  ",Weather: " + weatherType + ",Lakebed: " + lakebedType +  ",Swim: " + swim + ",Rig: " + rig  + ",Bait: " + bait + ",Weight: " + weightLB + "(lb) "
-                + "," + weightOZ + "(oz)"+ ",Time: " + Time  + ",Depth: " + depth + ",Distance: " + distance + ",Date: " + date;
+        return  photoID + ", Species: " + speciesType+ ", Lake: " + lakeName +  ", Weather: " + weatherType + ", Lakebed: " + lakebedType +  ", Swim: " + swim + ", Rig: " + rig  + ", Bait: " + bait + ", Weight: " + weightLB + "(lb) "
+                + "," + weightOZ + "(oz)"+ ", Time: " + Time  + ", Depth: " + depth + ", Distance: " + distance + ", Date: " + date;
     }
 }
